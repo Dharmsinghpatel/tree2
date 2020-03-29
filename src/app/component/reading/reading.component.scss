@@ -1,0 +1,20 @@
+@import '../../../assets/styles/media-query.scss';
+
+.form-row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.sticky-top {
+    top: 77px;
+
+    @include maxd(1616) {
+        top: 77px;
+    }
+
+    @include maxd(983) {
+        top: 65px;
+    }
+
+    background: #eee2dc;
+}

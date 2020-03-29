@@ -1,0 +1,22 @@
+//
+$un:px;
+//
+$n10: 10;
+$n0: 0;
+
+//padding
+.p-10{
+    padding:$n10+$un;
+}
+.pt-0 {
+    padding-top: $n0+$un;
+}
+
+.pt-10 {
+    padding-top: $n10+$un;
+}
+
+//margin
+.mt-10{
+    margin-top:$n10+$un;
+}

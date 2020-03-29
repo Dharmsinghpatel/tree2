@@ -1,0 +1,38 @@
+<div *ngIf="!isTopic">
+    <form class="sticky-top">
+        <div class="form-row mt-10 sticky">
+            <div class="form-group col-md-6">
+                <label for="inputState">Type</label>
+                <select id="inputState" class="form-control">
+                    <option selected>{{reading?.type}}</option>
+                    <option>...</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputCity">Search</label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
+        </div>
+        <hr>
+    </form>
+
+    <div class="row-content">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of reading?.content">
+                <div class="card mt-10">
+                    <img *ngIf="reading?.url!=''" class="card-img-top" src="../../../assets/images/{{reading?.url}}"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{reading.title}}</h5>
+                        <p class="card-text">{{reading.desc}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isTopic" class="p-10">
+    <p [innerHTML]="reading?.description"></p>
+</div>

@@ -1,0 +1,14 @@
+@import '../../../assets/colors/color.scss';
+
+.footer{
+    padding: 10px 0px;
+    height: 100px;
+    background-color: $c-tertiary
+}
+
+.footer .content {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+}

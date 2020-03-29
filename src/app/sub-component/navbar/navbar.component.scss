@@ -1,0 +1,37 @@
+@import "../../../assets/colors/color.scss";
+@import "../../../assets/font/font.scss";
+@import "../../../assets/styles/space.scss";
+
+.custom-navbar{
+    position: sticky;
+    top: 0;
+    // border-bottom: groove;
+    z-index: 1020;
+    background-color: $c-secondary;
+    color: $c-white;
+    font-size: $font-md;
+    font-size: $regular;
+}
+
+.custom-navbar .container{
+    padding:0px;
+}
+
+.navbar {
+    padding: .5rem 0rem;
+}
+
+.navbar a small,a,ul li a{
+    font-size: $font-md;
+    font-family: $primary_font;
+    font-weight: $regular;
+    color: $c-white;
+}
+
+// .active {
+//      font-size: $font-md;
+//     font-family: $primary_font;
+//     font-weight: $regular;
+//     color: $c-white !important;
+//     border-bottom: 2px solid $c-primary;
+// }

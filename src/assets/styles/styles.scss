@@ -1,0 +1,106 @@
+//----------------------------------*\
+// Fonts
+//----------------------------------*/
+@import '../font/font.scss';
+@import '../colors/color.scss';
+@import './space.scss';
+@import './media-query.scss';
+
+body {
+    font-family: $primary_font;
+    font-size: $primary-fs;
+    font-weight: $regular;
+}
+
+.parent-body{
+    min-height: 100vh;
+    padding: 0px;
+    // background-color: $c-white;
+    color:$c-font-primary;
+}
+
+.nav-link .navbar-toggler-icon{
+    display: inline-block;
+
+    @include rwd(1635) {
+        display: none;
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+        color: black;
+    }
+    
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+}
+
+// .custom-breadcrumb{
+//     .breadcrumb{
+//         display: flex;
+//         flex-wrap: wrap;
+//         padding: 5px 10px;
+//         margin-bottom: 10px;
+//         list-style: none;
+//         background-color: transparent;
+//         border-radius: 0rem;
+//         border-bottom: groove;
+//         border-bottom-width: 1px;
+//     }
+// }
+
+.title{
+    font-family: $primary_font;
+    font-size: $font-md;
+    font-weight: $bold;
+}
+
+.title-block{
+    align-items: center;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.title-text{
+    font-family: $primary_font;
+    font-size: $font-md;
+    font-weight: $bold;
+    border-bottom: 2px solid;
+    padding: 0px 10px;
+    display: inline-block;
+}
+
+.description{
+     font-family: $primary_font;
+    font-size: $primary-fs;
+    font-weight: $regular;
+}
+
+
+.pull-right{
+    text-align: right;
+}
+
+.pull-left{
+    text-align:left;
+}
+
+.pull-center{
+    text-align:center;
+}
+
+//ul custom style
+
+ul {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 2.5;
+    margin: 0px;
+    padding: 0px;
+    font-family: $primary_font;
+    font-size: $primary-fs;
+    font-weight: $regular;
+}

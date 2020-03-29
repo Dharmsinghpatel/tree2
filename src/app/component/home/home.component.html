@@ -1,0 +1,101 @@
+<div class="info">
+  <div class="title-block">
+    <p class="title-text">{{dash?.info.title}}</p>
+  </div>
+
+  <p class="description">
+    {{dash?.info.desc}}
+  </p>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary">Read More</button>
+  </div>
+</div>
+
+<div class="row-content">
+  <div class="title-block">
+    <p class="title-text">Read</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.read.content">
+      <div class="card" (click)="readEvent(reading?.id)">
+        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{reading.title}}</h5>
+          <p class="card-text">{{reading.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-outline-secondary" routerLink="/read">More</button>
+  </div>
+</div>
+
+<div class="row-content">
+  <div class="title-block">
+    <p class="title-text">Watch</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.watch.content">
+      <div class="card">
+        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{reading.title}}</h5>
+          <p class="card-text">{{reading.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary">More</button>
+  </div>
+</div>
+
+<div class="row-content">
+  <div class="title-block">
+    <p class="title-text">Problem And Solution</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.chat.content">
+      <div class="card">
+        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{reading.title}}</h5>
+          <p class="card-text">{{reading.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary">More</button>
+  </div>
+</div>
+
+<div class="row-content">
+  <div class="title-block">
+    <p class="title-text">News</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.news.content">
+      <div class="card">
+        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{reading.title}}</h5>
+          <p class="card-text">{{reading.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary">More</button>
+  </div>
+</div>
