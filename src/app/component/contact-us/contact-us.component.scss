@@ -1,0 +1,39 @@
+@import "../../../assets/colors/color.scss";
+@import "../../../assets/font/font.scss";
+
+.contact{
+    padding: 4%;
+}
+.col-md-3{
+    background: $c-yellow;
+    padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+.contact-info{
+    margin-top:10%;
+}
+.contact-info img{
+    margin-bottom: 15%;
+}
+.contact-info h2{
+    margin-bottom: 10%;
+}
+.col-md-9{
+    background:$c-white;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.contact-form label{
+    font-weight:$medium;
+}
+.contact-form button{
+    background: $c-primary;
+    color: $c-font-white;
+    font-weight:$medium                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;
+    width: 25%;
+}
+.contact-form button:focus{
+    box-shadow:none;
+}

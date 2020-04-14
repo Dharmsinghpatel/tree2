@@ -1,0 +1,13 @@
+@import '../../../assets/styles/media-query.scss';
+@import '../../../assets/colors/color.scss';
+.youtube-frame{
+    width:100%;
+    min-height: 345px;
+    // @include sm {
+    //     min-height: 150px;
+    // }   
+}
+.image  {
+    width: 100%;
+}
+

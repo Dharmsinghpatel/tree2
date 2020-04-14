@@ -1,0 +1,28 @@
+<div class="video-player" [ngClass]="!isModal?'p-10':''">
+    <div class="video-container" *ngIf="!playVideo">
+        <img alt="Snow" src="../../../assets/images/{{image}}" [ngClass]="isModal?'card-img-top':'image  mh-100'">
+        <button class="btn btn-play" (click)="isModal?open(mymodal):play()"><i
+                class="ag-media-play btn-player"></i></button>
+    </div>
+
+    <div *ngIf="playVideo">
+        <iframe class="youtube-frame yvideo-handle" [src]="youtube_link | safehtml" frameborder="0" [id]="youtubId"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Video</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <iframe class="youtube-frame yvideo-handle" [src]="youtube_link | safehtml" frameborder="0" [id]="youtubId"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Done</button>
+    </div>
+</ng-template>

@@ -2,6 +2,8 @@
 $un:px;
 //
 $n10: 10;
+$n30: 30;
+$n50: 50;
 $n0: 0;
 
 //padding
@@ -19,4 +21,16 @@ $n0: 0;
 //margin
 .mt-10{
     margin-top:$n10+$un;
+}
+
+.mt-50{
+    margin-top:$n50+$un;
+}
+
+.mb-10{
+    margin-bottom:$n10+$un;
+}
+
+.mb-30{
+    margin-bottom:$n30+$un;
 }

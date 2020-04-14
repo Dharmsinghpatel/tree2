@@ -1,0 +1,31 @@
+<div class="mt-10">
+    <app-youtube-player [youtube-id]="ivideo?.id" [image]="ivideo?.url" [id]="'1'" [is-modal]="isModal">
+    </app-youtube-player>
+</div>
+<div class="card-body card-text-bold">
+    <h5 class="card-title">{{ivideo?.title}}</h5>
+    <p class="card-text">{{ivideo?.desc}}</p>
+</div>
+
+<hr>
+<br>
+
+<div class="row-content">
+    <div class="row">
+        <div class="col-md-3 col-sm-4 col-12" *ngFor="let video of video?.content;let i=index">
+            <div class="card card-border mt-10">
+                <div class="card-img-top">
+                    <div class="video-container">
+                        <img alt="Snow" src="../../../assets/images/{{video?.url}}" class="card-img-top">
+                        <button class="btn btn-play" (click)="play(video)"><i
+                                class="ag-media-play btn-player"></i></button>
+                    </div>
+                </div>
+                <div class="card-body card-text-bold">
+                    <h5 class="card-title">{{video.title}}</h5>
+                    <p class="card-text">{{video.desc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

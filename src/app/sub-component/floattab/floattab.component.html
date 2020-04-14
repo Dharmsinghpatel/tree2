@@ -1,0 +1,75 @@
+<a *ngIf="floattab.isBack" href="javascript:void(0)" class="float float-one float-icon"
+    routerLink="/{{floattab.backNav}}"><i class="ag-cancel"></i></a>
+
+<a href="javascript:void(0)" class="float float-two float-icon" routerLink="/home"><i class="ag-home"></i></a>
+
+<a href="javascript:void(0)" class="float float-three float-icon" (click)="openModal(langModal)"><i
+        class="ag-cog-outline"></i></a>
+
+<!-- language setting -->
+<ng-template #langModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Setting</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p class="title">Do you want to change language?</p>
+        <div>
+            <label class="radio-container">English
+                <input type="radio" name="radio" value="eng" (change)="switchLang('en')">
+                <span class="checkmark"></span>
+            </label>
+            <label class="radio-container" value="hi" (change)="switchLang('hi')">हिन्दी
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+            <label class="radio-container" value="hg" (change)="switchLang('hg')">Hinglish
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Done</button>
+    </div>
+</ng-template>
+
+<!-- Signin Modal -->
+<ng-template #signModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Sign In</h4>
+        <a class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </a>
+    </div>
+    <div class="modal-body">
+        <!-- form card login -->
+        <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+            <div class="form-group">
+                <label for="uname1">Username</label>
+                <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
+                <div class="invalid-feedback">Oops, you missed this one.</div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" required=""
+                    autocomplete="new-password">
+                <div class="invalid-feedback">Enter your password too!</div>
+            </div>
+            <div>
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description small text-dark">Remember me on this computer</span>
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg float-left" id="btnSignup">Sign Up</button>
+            <button type="submit" class="btn btn-success btn-lg float-right" id="btnSignin">Login</button>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Done</button>
+    </div>
+</ng-template>

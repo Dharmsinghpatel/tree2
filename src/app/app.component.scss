@@ -1,0 +1,46 @@
+@import '../assets/colors/color.scss';
+
+.float{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.float-one {
+    bottom: 7rem;
+  }
+
+.float-two {
+    bottom: 4rem;
+}
+
+.float-three {
+   bottom: 1rem;
+}
+
+.float-icon {
+    border: 2px solid $c-primary;
+    border-radius: 50px;
+    text-align: center;
+    color: $c-font-white;
+    width: 30px;
+    height: 30px;
+    background: $c-primary;
+    text-decoration: none;
+  }
+
+/* mouse over link */
+.float-icon:hover{
+    border: 2px solid $c-secondary;
+    color: $c-font-white;
+    background: $c-secondary;
+}
+
+/* mouse over link */
+.float-icon:focus{
+    border: 2px solid $c-secondary;
+    color: $c-font-white;
+    background: $c-secondary;
+}

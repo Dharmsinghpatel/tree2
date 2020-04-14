@@ -11,6 +11,7 @@ export class ApiService {
   private _jsonURL = '../assets/dashboard.json';
   private r_jsonURL = '../assets/reading.json';
   private t_jsonURL = '../assets/topics.json';
+  private v_jsonURL = '../assets/video.json';
   constructor(public http: HttpClient) {
 
   }
@@ -31,6 +32,13 @@ export class ApiService {
 
   public getTopic(): Observable<any> {
     return this.http.get(this.t_jsonURL).pipe(
+      map((response: any) => response),
+      catchError((error: any) => throwError(error))
+    )
+  }
+
+  public getVideo(): Observable<any> {
+    return this.http.get(this.v_jsonURL).pipe(
       map((response: any) => response),
       catchError((error: any) => throwError(error))
     )

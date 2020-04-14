@@ -1,3 +1,4 @@
+<!-- #1 start -->
 <div class="info">
   <div class="title-block">
     <p class="title-text">{{dash?.info.title}}</p>
@@ -8,21 +9,25 @@
   </p>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary">Read More</button>
+    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+        class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
+<hr>
+<!-- #1 end -->
 
+<!-- #2 start reading-->
 <div class="row-content">
   <div class="title-block">
-    <p class="title-text">Read</p>
+    <p class="title-text">Read and Learn</p>
   </div>
 
   <div class="row">
     <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.read.content">
-      <div class="card" (click)="readEvent(reading?.id)">
+      <div class="card card-border" (click)="navigate('read',reading?.id)">
         <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{reading.title}}</h5>
+        <div class="card-body card-text-bold">
+          <h5 *ngIf="reading.title" class="card-title">{{reading.title}}</h5>
           <p class="card-text">{{reading.desc}}</p>
         </div>
       </div>
@@ -30,72 +35,114 @@
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-outline-secondary" routerLink="/read">More</button>
+    <button type="button" class="btn btn-primary" routerLink="/read"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
+<hr>
+<!-- #2 end -->
 
+<!-- #3 start -->
+<div class="info">
+  <div class="title-block">
+    <p class="title-text">{{dash?.info.title}}</p>
+  </div>
+
+  <p class="description">
+    {{dash?.info.desc}}
+  </p>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+        class="ag-arrow-right-thick"></i></button>
+  </div>
+</div>
+<hr>
+<!-- #3 end -->
+
+<!-- #4 start video -->
 <div class="row-content">
   <div class="title-block">
-    <p class="title-text">Watch</p>
+    <p class="title-text">Time to Watch, Work</p>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.watch.content">
-      <div class="card">
-        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{reading.title}}</h5>
-          <p class="card-text">{{reading.desc}}</p>
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let video of dash?.watch.content;let i=index">
+      <div class="card card-border">
+        <div class="card-img-top">
+          <app-youtube-player [youtube-id]="video.id" [image]="video.url" [id]="i"></app-youtube-player>
+        </div>
+        <div class="card-body card-text-bold">
+          <!-- <h5 *ngIf="video.title" class="card-title">{{video.title}}</h5> -->
+          <p class="card-text">{{video.desc}}</p>
         </div>
       </div>
     </div>
+
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary">More</button>
+    <button type="button" class="btn btn-primary" routerLink="/video"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
+<hr>
+<!-- #4 end -->
 
+<!-- #5 start -->
+<div class="info">
+  <div class="title-block">
+    <p class="title-text">{{dash?.info.title}}</p>
+  </div>
+
+  <p class="description">
+    {{dash?.info.desc}}
+  </p>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+        class="ag-arrow-right-thick"></i></button>
+  </div>
+</div>
+<hr>
+<!-- #5 end -->
+
+<!-- #6 start news -->
 <div class="row-content">
   <div class="title-block">
-    <p class="title-text">Problem And Solution</p>
+    <p class="title-text">Connent to World</p>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.chat.content">
-      <div class="card">
-        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{reading.title}}</h5>
-          <p class="card-text">{{reading.desc}}</p>
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let news of dash?.news.content">
+      <div class="card card-border" (click)="navigate('news',news?.id)">
+        <img class="card-img-top" src="../../../assets/images/{{news?.url}}" alt="Card image cap">
+        <div class="card-body card-text-bold">
+          <h5 *ngIf="news.title" class="card-title">{{news.title}}</h5>
+          <p class="card-text">{{news.desc}}</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary">More</button>
+    <button type="button" class="btn btn-primary" routerLink="/news"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
+<hr>
+<!-- #6 end -->
 
-<div class="row-content">
+<!-- #7 start -->
+<div class="info mb-30">
   <div class="title-block">
-    <p class="title-text">News</p>
+    <p class="title-text">{{dash?.info.title}}</p>
   </div>
 
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.news.content">
-      <div class="card">
-        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{reading.title}}</h5>
-          <p class="card-text">{{reading.desc}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <p class="description">
+    {{dash?.info.desc}}
+  </p>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary">More</button>
+    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+        class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
+<!-- #7 end -->

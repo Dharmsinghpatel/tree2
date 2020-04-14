@@ -1,14 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //service
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CarouselService } from './sub-component/carousel/carousel.service';
 import { HeaderService } from './sub-component/header/header.service';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+//componet
 import { HeaderComponent } from './sub-component/header/header.component';
 import { FooterComponent } from './sub-component/footer/footer.component';
 import { SidebarComponent } from './sub-component/sidebar/sidebar.component';
@@ -17,8 +21,16 @@ import { BreadcrumbComponent } from './sub-component/breadcrumb/breadcrumb.compo
 import { HomeComponent } from './component/home/home.component';
 import { CarouselComponent } from './sub-component/carousel/carousel.component';
 import { ReadingComponent } from './component/reading/reading.component';
-
-// import { HomeComponent } from './component/home/home.component';
+import { NavbarService } from './sub-component/navbar/navbar.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { YoutubePlayerComponent } from './sub-component/youtube-player/youtube-player.component';
+import { SafehtmlPipe } from './pipe/safehtml.pipe';
+import { VideoComponent } from './component/video/video.component';
+import { YoutubeService } from './sub-component/youtube-player/youtube.service';
+import { FloattabComponent } from './sub-component/floattab/floattab.component';
+import { FloattabService } from './sub-component/floattab/floattab.service';
+import { ContactUsComponent } from './component/contact-us/contact-us.component';
+import { AboutUsComponent } from './component/about-us/about-us.component';
 
 
 @NgModule({
@@ -26,23 +38,47 @@ import { ReadingComponent } from './component/reading/reading.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    // HomeComponent,
     SidebarComponent,
     NavbarComponent,
     BreadcrumbComponent,
     HomeComponent,
     CarouselComponent,
-    ReadingComponent
+    ReadingComponent,
+    YoutubePlayerComponent,
+    SafehtmlPipe,
+    VideoComponent,
+    FloattabComponent,
+    ContactUsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    NgbModule
   ],
   providers: [
     CarouselService,
-    HeaderService
+    HeaderService,
+    NavbarService,
+    ReadingComponent,
+    TranslateService,
+    YoutubeService,
+    FloattabService
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

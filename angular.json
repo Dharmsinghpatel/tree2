@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "agriarbor"
+  "defaultProject": "agriarbor",
+  "cli": {
+    "analytics": false
+  }
 }

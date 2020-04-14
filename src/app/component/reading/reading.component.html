@@ -1,29 +1,11 @@
 <div *ngIf="!isTopic">
-    <form class="sticky-top">
-        <div class="form-row mt-10 sticky">
-            <div class="form-group col-md-6">
-                <label for="inputState">Type</label>
-                <select id="inputState" class="form-control">
-                    <option selected>{{reading?.type}}</option>
-                    <option>...</option>
-                </select>
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="inputCity">Search</label>
-                <input type="text" class="form-control" id="inputCity">
-            </div>
-        </div>
-        <hr>
-    </form>
-
     <div class="row-content">
         <div class="row">
             <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of reading?.content">
-                <div class="card mt-10">
+                <div class="card card-border mt-10" (click)="navigate('read',reading?.id)">
                     <img *ngIf="reading?.url!=''" class="card-img-top" src="../../../assets/images/{{reading?.url}}"
                         alt="Card image cap">
-                    <div class="card-body">
+                    <div class="card-body card-text-bold">
                         <h5 class="card-title">{{reading.title}}</h5>
                         <p class="card-text">{{reading.desc}}</p>
                     </div>
@@ -34,5 +16,54 @@
 </div>
 
 <div *ngIf="isTopic" class="p-10">
-    <p [innerHTML]="reading?.description"></p>
-</div>
+    <div *ngFor="let content of reading?.contents;let i=index">
+        <div [ngSwitch]="content?.type">
+            <div *ngSwitchCase="'decscription'">
+                <p [innerHTML]="content?.inner_html"></p>
+            </div>
+
+            <div *ngSwitchCase="'image'">
+                <img class="card-img-top" src="../../../assets/images/{{content?.url}}" alt="Card image cap">
+                <p class="mt-10 pull-center">{{content?.title}}</p>
+            </div>
+
+            <div *ngSwitchCase="'video'">
+                <app-youtube-player [youtube-id]="content.id" [image]="content.url" [id]="i" [is-modal]="isModal">
+                </app-youtube-player>
+            </div>
+
+            <div *ngSwitchCase="'sub_topics'">
+                <div id="accordion" class="accordion">
+                    <div class="card mt-10" *ngFor="let subTopic of content?.sub_topics;let tpcI=index">
+                        <div class="card-header collapsed" data-toggle="collapse" [attr.href]="'#collapse'+tpcI">
+                            <a class="card-title title">
+                                {{subTopic?.title}}
+                            </a>
+                            <i class="icon-plus pull-right"></i>
+                        </div>
+                        <div id="collapse{{tpcI}}" class="card-body collapse" data-parent="#accordion">
+                            <div *ngFor="let content of subTopic?.contents;let cI=index">
+                                <div [ngSwitch]="content?.type">
+                                    <div *ngSwitchCase="'decscription'">
+                                        <p [innerHTML]="content?.inner_html"></p>
+                                    </div>
+
+                                    <div *ngSwitchCase="'image'">
+                                        <img class="card-img-top" src="../../../assets/images/{{content?.url}}"
+                                            alt="Card image cap">
+                                        <p class="mt-10 pull-center">{{content?.title}}</p>
+                                    </div>
+
+                                    <div *ngSwitchCase="'video'">
+                                        <app-youtube-player [youtube-id]="content.id" [image]="content.url" [id]="cI"
+                                            [is-modal]="isModal">
+                                        </app-youtube-player>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
