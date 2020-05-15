@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { YoutubeService } from './youtube.service';
+import { AppSettings } from '../../config/AppSettings'
+import { ApiService } from 'src/service/api.service';
 // import reframe from 'reframe.js';
 
 @Component({
@@ -16,30 +18,37 @@ export class YoutubePlayerComponent implements OnInit {
   // @ViewChild('player', { static: false }) public player: ElementRef;
   playVideo = false;
   youtube_link: any;
+  logo = '';
 
   title = 'appBootstrap';
   closeResult: string;
 
   constructor(
     private modalService: NgbModal,
-    public youtube: YoutubeService
+    public youtube: YoutubeService,
+    public api: ApiService
   ) {
+    this.logo = AppSettings.LOGO;
   }
 
 
   ngOnInit() {
-    // this.videoPlayer();
     this.youtube_link = "https://www.youtube.com/embed/" + this.youtubId;
     console.log(this.youtube_link);
   }
 
+  //overload previous video
   ngDoCheck() {
-    this.youtubId = this.youtube.youtubeVideo.id;
+
+    this.youtubId = this.youtube.youtubeVideo.id ? this.youtube.youtubeVideo.link : this.youtubId;
     this.youtube_link = "https://www.youtube.com/embed/" + this.youtubId;
+    console.log(this.youtube_link);
     window.scrollTo(0, 0);
   }
 
   open(content) {
+    this.api.analytic({ 'video_id': this.youtubId }).subscribe(res => { });
+
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -58,8 +67,9 @@ export class YoutubePlayerComponent implements OnInit {
   }
 
   play() {
-    console.log('change id>>', this.youtubId, this.image);
+    this.api.analytic({ 'video_id': this.youtubId }).subscribe(res => { });
     this.youtube_link = "https://www.youtube.com/embed/" + this.youtubId;
     this.playVideo = true;
   }
+
 }

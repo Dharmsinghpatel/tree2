@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CarouselService } from './carousel.service';
+import { ApiService } from 'src/service/api.service';
 
 @Component({
   selector: 'app-carousel',
@@ -8,7 +9,7 @@ import { CarouselService } from './carousel.service';
 })
 export class CarouselComponent implements OnInit {
   advs: any;
-  constructor(public carsl: CarouselService) {
+  constructor(public carsl: CarouselService, public api: ApiService) {
   }
 
   ngOnInit() {

@@ -92,34 +92,6 @@
             }
         ]
     },
-    "chat": {
-        "content": [
-            {
-                "url": "agriculture-basil-bunch-cultivation.jpg",
-                "event": "",
-                "title": "Header 1",
-                "desc": "Some quick example text to build on the card title and make up the bulk of the card's content. 1"
-            },
-            {
-                "url": "cropland.jpg",
-                "event": "",
-                "title": "",
-                "desc": "Some quick example text to build on the card title and make up the bulk of the card's content. 2"
-            },
-            {
-                "url": "agriculture-basil-bunch-cultivation.jpg",
-                "event": "",
-                "title": "",
-                "desc": "Some quick example text to build on the card title and make up the bulk of the card's content. 3"
-            },
-            {
-                "url": "agriculture-basil-bunch-cultivation.jpg",
-                "event": "",
-                "title": "",
-                "desc": "Some quick example text to build on the card title and make up the bulk of the card's content. 3"
-            }
-        ]
-    },
     "news": {
         "content": [
             {

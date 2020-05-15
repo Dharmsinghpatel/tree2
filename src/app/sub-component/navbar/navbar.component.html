@@ -2,8 +2,7 @@
   <div class="container">
     <nav class="navbar navbar-light">
       <a class="navbar-brand" href="javascript:void(0)" routerLink="/home">
-        <img width="40" alt="Angular Logo"
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+        <img width="40" alt="Angular Logo" [src]="logo | safehtml" />
         Agri Arbor</a>
 
       <div class="" id="navbarSupportedContent">
@@ -17,13 +16,22 @@
         <form class="my-2 my-lg-0" *ngIf="navService?.isSearch" [formGroup]="searchForm">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="{{'search-placeholder' | translate}}"
-              formControlName="search" name="search">
+              formControlName="product_name" name="product_name">
+
             <div class="input-group-append">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">{{'type' | translate}}</button>
+              <button id="select_button" class="btn btn-secondary dropdown-toggle text-capitalize" type="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'Filter' | translate}}</button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0)">{{'animal' | translate}}</a>
-                <a class="dropdown-item" href="javascript:void(0)">{{ 'crop' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('all')">{{'all' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('animal')">{{'animal' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('crop')">{{ 'Crop' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('fertilizer')">{{ 'Fertilizer' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('pesticides')">{{ 'Pesticides' | translate}}</a>
               </div>
             </div>
             <div class="input-group-append">

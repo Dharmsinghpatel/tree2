@@ -1,15 +1,13 @@
 <!-- #1 start -->
-<div class="info">
+<div class="info" *ngIf="info">
   <div class="title-block">
-    <p class="title-text">{{dash?.info.title}}</p>
+    <p class="title-text">{{info[0].title}}</p>
   </div>
 
-  <p class="description">
-    {{dash?.info.desc}}
-  </p>
+  <p class="description" [innerHTML]="info[0].description"></p>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+    <button type="button" class="btn btn-primary" (click)="navigate('info',info[0].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
@@ -22,37 +20,35 @@
     <p class="title-text">Read and Learn</p>
   </div>
 
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of dash?.read.content">
-      <div class="card card-border" (click)="navigate('read',reading?.id)">
-        <img class="card-img-top" src="../../../assets/images/{{reading?.url}}" alt="Card image cap">
+  <div class="row" *ngIf="read">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of read">
+      <div class="card card-border" (click)="navigate('document',reading?.id)">
+        <img class="card-img-top" src="{{reading?.image_url}}" alt="{{reading?.file_name}}">
         <div class="card-body card-text-bold">
           <h5 *ngIf="reading.title" class="card-title">{{reading.title}}</h5>
-          <p class="card-text">{{reading.desc}}</p>
+          <p class="card-text" [innerHTML]="reading.description"></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/read"><i class="ag-arrow-right-thick"></i></button>
+    <button type="button" class="btn btn-primary" routerLink="/document"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
 <hr>
 <!-- #2 end -->
 
 <!-- #3 start -->
-<div class="info">
+<div class="info" *ngIf="info">
   <div class="title-block">
-    <p class="title-text">{{dash?.info.title}}</p>
+    <p class="title-text">{{info[1].title}}</p>
   </div>
 
-  <p class="description">
-    {{dash?.info.desc}}
-  </p>
+  <p class="description" [innerHTML]="info[1].description"></p>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+    <button type="button" class="btn btn-primary" (click)="navigate('info',info[1].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
@@ -60,20 +56,20 @@
 <!-- #3 end -->
 
 <!-- #4 start video -->
-<div class="row-content">
+<div class="row-content" *ngIf="resources">
   <div class="title-block">
     <p class="title-text">Time to Watch, Work</p>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let video of dash?.watch.content;let i=index">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let video of resources;let i=index">
       <div class="card card-border">
         <div class="card-img-top">
-          <app-youtube-player [youtube-id]="video.id" [image]="video.url" [id]="i"></app-youtube-player>
+          <app-youtube-player [youtube-id]="video.link" [image]="video.image_url" [id]="i"></app-youtube-player>
         </div>
         <div class="card-body card-text-bold">
           <!-- <h5 *ngIf="video.title" class="card-title">{{video.title}}</h5> -->
-          <p class="card-text">{{video.desc}}</p>
+          <p class="card-text">{{video.description}}</p>
         </div>
       </div>
     </div>
@@ -88,17 +84,16 @@
 <!-- #4 end -->
 
 <!-- #5 start -->
-<div class="info">
+<div class="info" *ngIf="info">
   <div class="title-block">
-    <p class="title-text">{{dash?.info.title}}</p>
+    <p class="title-text">{{info[2].title}}</p>
   </div>
 
-  <p class="description">
-    {{dash?.info.desc}}
+  <p class="description" [innerHTML]="info[2].description">
   </p>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+    <button type="button" class="btn btn-primary" (click)="navigate('info',info[2].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
@@ -111,13 +106,13 @@
     <p class="title-text">Connent to World</p>
   </div>
 
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let news of dash?.news.content">
-      <div class="card card-border" (click)="navigate('news',news?.id)">
-        <img class="card-img-top" src="../../../assets/images/{{news?.url}}" alt="Card image cap">
+  <div class="row" *ngIf="news">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let detail of news">
+      <div class="card card-border" (click)="navigate('news',detail?.id)">
+        <img class="card-img-top" src="{{detail?.image_url}}" alt="{{detail?.file_name}}">
         <div class="card-body card-text-bold">
-          <h5 *ngIf="news.title" class="card-title">{{news.title}}</h5>
-          <p class="card-text">{{news.desc}}</p>
+          <h5 *ngIf="news.title" class="card-title">{{detail.title}}</h5>
+          <p class="card-text" [innerHTML]="detail.description"></p>
         </div>
       </div>
     </div>
@@ -131,18 +126,18 @@
 <!-- #6 end -->
 
 <!-- #7 start -->
-<div class="info mb-30">
+<div class="info" *ngIf="info">
   <div class="title-block">
-    <p class="title-text">{{dash?.info.title}}</p>
+    <p class="title-text">{{info[3].title}}</p>
   </div>
 
-  <p class="description">
-    {{dash?.info.desc}}
+  <p class="description" [innerHTML]="info[3].description">
   </p>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" (click)="navigate('know',dash?.info.id)"><i
+    <button type="button" class="btn btn-primary" (click)="navigate('info',info[3].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
+<hr>
 <!-- #7 end -->

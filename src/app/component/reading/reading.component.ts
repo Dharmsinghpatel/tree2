@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderService } from 'src/app/sub-component/header/header.service';
 import { ApiService } from 'src/service/api.service';
@@ -11,7 +11,9 @@ import { FloattabService } from 'src/app/sub-component/floattab/floattab.service
   styleUrls: ['./reading.component.scss']
 })
 export class ReadingComponent implements OnInit {
-  reading: any;
+  topic: any = [];
+  topics: any = [];
+  currentRoute = '';
   isTopic: boolean = false;
   isModal: boolean = false;
 
@@ -22,40 +24,50 @@ export class ReadingComponent implements OnInit {
     public navbar: NavbarService,
     public floattab: FloattabService) {
     this.header.show();
-    this.header.title = 'Reading Content';
-
+    this.header.title = 'Loading ...'
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(paramMap => {
-      let id = paramMap.get('id');
-      if (id != undefined && id != null && id != '') {
-        this.isTopic = true;
-        this.api.getTopic().subscribe(res => {
-          this.header.title = res[0]['title'];
-          this.reading = res[0];
-          this.navbar.isSearch = false;
-          this.navbar.isType = false;
-          this.floattab.isBack = true;
-          this.floattab.backNav = "read";
-        })
-        return;
-      }
+    this.route.data.subscribe(routeData => {
+      localStorage.setItem('currentRoute', routeData['type']);
+      this.currentRoute = routeData['type'];
+      this.route.paramMap.subscribe(paramMap => {
+        let id = paramMap.get('id');
 
-      this.api.getReading().subscribe(data => {
-        this.floattab.isBack = false;
-        this.floattab.backNav = "";
-        this.reading = data;
-        this.header.hide();
-        this.navbar.isSearch = true;
-        this.navbar.isType = true;
+        if (id != undefined && id != null && id != '') {
+          this.isTopic = true;
+
+          this.api.getTopicDetail({ id: id }).subscribe(res => {
+            if (res.status == 'success') {
+              this.topic = res.data;
+              this.header.title = this.topic['title'];
+              this.navbar.isSearch = false;
+              this.navbar.isType = false;
+              this.floattab.isBack = true;
+              console.log(routeData)
+              this.floattab.backNav = routeData.type;
+            }
+          })
+          return;
+        }
+
+        this.api.getTopics(routeData).subscribe(res => {
+          if (res.status == 'success') {
+            this.topics = res.data;
+            this.floattab.isBack = false;
+            this.floattab.backNav = "";
+            this.header.hide();
+            this.navbar.isSearch = true;
+            this.navbar.isType = true;
+          }
+        })
       })
     })
   }
 
-
-  searchMethod(value) {
-    console.log('search>>', value);
+  ngDoCheck() {
+    let temp = this.navbar.searchTopics;
+    this.topics = temp && temp.length > 0 ? temp : this.topics;
   }
 
   navigate(type: string, id: string) {

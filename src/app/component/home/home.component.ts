@@ -11,28 +11,34 @@ import { NavbarService } from 'src/app/sub-component/navbar/navbar.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  dash: any;
+  info: any;
+  read: any;
+  news: any;
+  resources: any;
   constructor(public api: ApiService, public carsl: CarouselService,
     public header: HeaderService, public router: Router, public navService: NavbarService) {
     this.carsl.show();
     navService.isSearch = false;
     navService.isType = false;
 
-    this.api.getDashboard().subscribe(data => {
-      console.log(data);
-      this.dash = data;
-      this.header.hide();
-      this.navService.isName = "Welcome to You!";
-      // this.navService.isName = "Hi, " + data.name;
-      this.carsl.setAdvertise(data.advs);
+    this.header.hide();
+    this.navService.isName = "Welcome to You!";
+
+    this.api.getDashboard().subscribe(res => {
+      if (res.status == 'success') {
+        const dash = res.data;
+        this.info = dash['info']
+        this.news = dash['news']
+        this.read = dash['read']
+        this.resources = dash['resources']
+
+        this.carsl.setAdvertise(dash['carousel']);
+      }
     });
-
-
   }
 
   ngOnInit() {
   }
-
 
   readEvent(event: any) {
     this.router.navigate(['/read', event]).then(nav => {

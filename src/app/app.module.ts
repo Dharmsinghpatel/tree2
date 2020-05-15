@@ -4,9 +4,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 //service
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarouselService } from './sub-component/carousel/carousel.service';
 import { HeaderService } from './sub-component/header/header.service';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -31,6 +33,9 @@ import { FloattabComponent } from './sub-component/floattab/floattab.component';
 import { FloattabService } from './sub-component/floattab/floattab.service';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { AboutUsComponent } from './component/about-us/about-us.component';
+
+//interceptor
+import { MockHttpCalIInterceptor } from '../interceptor/http.interceptor';
 
 
 @NgModule({
@@ -64,7 +69,9 @@ import { AboutUsComponent } from './component/about-us/about-us.component';
         deps: [HttpClient]
       }
     }),
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     CarouselService,
@@ -73,7 +80,12 @@ import { AboutUsComponent } from './component/about-us/about-us.component';
     ReadingComponent,
     TranslateService,
     YoutubeService,
-    FloattabService
+    FloattabService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MockHttpCalIInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

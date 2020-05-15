@@ -12,7 +12,8 @@ import { YoutubeService } from 'src/app/sub-component/youtube-player/youtube.ser
 })
 export class VideoComponent implements OnInit {
 
-  video: any;
+  videoes: any = [];
+  video: any = [];
   ivideo: any;
   isVideo: boolean = false;
   isModal: boolean = false;
@@ -25,6 +26,9 @@ export class VideoComponent implements OnInit {
     this.navbar.isSearch = true;
     this.navbar.isType = true;
     this.header.hide();
+    this.route.data.subscribe(routeData => {
+      localStorage.setItem('currentRoute', routeData['type']);
+    })
   }
 
   ngOnInit(): void {
@@ -32,23 +36,27 @@ export class VideoComponent implements OnInit {
       let id = paramMap.get('id');
       if (id != undefined && id != null && id != '') {
         this.isVideo = true;
-        this.api.getVideo().subscribe(res => {
-          console.log("Topic", res);
-          this.video = res[0];
+        this.api.getVideoes({ id: id }).subscribe(res => {
+          if (res.status == 'success') {
+            console.log("Topic", res);
+            this.video = res[0];
+          }
         })
         return;
       }
 
-      this.api.getVideo().subscribe(res => {
-        this.video = res;
-        this.ivideo = res['content'][0];
+      this.api.getVideoes({}).subscribe(res => {
+        if (res.status == 'success') {
+          this.videoes = res.data;
+          this.ivideo = res.data[0];
+        }
       })
     })
   }
 
-
-  searchMethod(value) {
-    console.log('search>>', value);
+  ngDoCheck() {
+    let temp = this.navbar.searchVideoes;
+    this.videoes = temp && temp.length > 0 ? temp : this.videoes;
   }
 
   play(video: any) {

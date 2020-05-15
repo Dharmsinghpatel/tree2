@@ -1,46 +1,53 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from "rxjs/operators";
+import { AppSettings } from '../app/config/AppSettings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private _jsonURL = '../assets/dashboard.json';
-  private r_jsonURL = '../assets/reading.json';
-  private t_jsonURL = '../assets/topics.json';
-  private v_jsonURL = '../assets/video.json';
+  public API_BASE = AppSettings.API_ENDPOINT;
   constructor(public http: HttpClient) {
 
   }
 
-  public getDashboard(): Observable<any> {
-    return this.http.get(this._jsonURL).pipe(
+  public getDashboard() {
+    return this.apiCall('dashboard');
+  }
+
+  public analytic(data) {
+    console.log(data)
+    return this.apiCall('resources/video', data, 'post');
+  }
+
+  public getTopics(data) {
+    return this.apiCall('documents/topics', data, 'post')
+  }
+
+  public getTopicDetail(data) {
+    return this.apiCall('documents/topic', data, 'post');
+  }
+
+  public getVideoes(data) {
+    return this.apiCall('resources/videoes', data, 'post');
+  }
+
+  public search(data) {
+    return this.apiCall('documents/search', data, 'post');
+  }
+
+  public sendMessage(data) {
+    return this.apiCall('auth/sendMessage', data, 'post');
+  }
+
+  public apiCall(url = '', data = {}, method = 'get'): Observable<any> {
+    return this.http[method](this.API_BASE + url, data).pipe(
       map((response: any) => response),
       catchError((error: any) => throwError(error))
     )
   }
 
-  public getReading(): Observable<any> {
-    return this.http.get(this.r_jsonURL).pipe(
-      map((response: any) => response),
-      catchError((error: any) => throwError(error))
-    )
-  }
-
-  public getTopic(): Observable<any> {
-    return this.http.get(this.t_jsonURL).pipe(
-      map((response: any) => response),
-      catchError((error: any) => throwError(error))
-    )
-  }
-
-  public getVideo(): Observable<any> {
-    return this.http.get(this.v_jsonURL).pipe(
-      map((response: any) => response),
-      catchError((error: any) => throwError(error))
-    )
-  }
 }

@@ -318,3 +318,8 @@ a, a:hover {
   text-decoration: none;
   background-color: transparent;
 }
+
+.required:after {
+  content:" *";
+  color: red;
+}

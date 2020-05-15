@@ -2,35 +2,73 @@
     <div class="row">
         <div class="col-md-3">
             <div class="contact-info">
-                <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+                <img src="../../../assets/images/contact-image.png" alt="Message" />
                 <h2>Contact Us</h2>
                 <h4>We would love to hear from you !</h4>
             </div>
         </div>
         <div class="col-md-9">
-            <div class="contact-form">
+            <form [formGroup]="form" class="contact-form" (ngSubmit)="send()">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="fname">First Name:</label>
+
+                    <label class="control-label col-sm-2 required" for="first_name">First Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="fname" placeholder="Enter First Name" name="fname">
+                        <input type="text" class="form-control" name="first_name" id="first_name"
+                            formControlName="first_name" placeholder="Enter First Name">
+
+                        <div *ngIf="formControl.first_name.invalid && (formControl.first_name.dirty || formControl.first_name.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="formControl.first_name.errors.required">
+                                First Name is required.
+                            </div>
+                            <div *ngIf="formControl.first_name.errors.minlength">
+                                Fisrt Name must be at least 4 characters long.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="lname">Last Name:</label>
+                    <label class="control-label col-sm-2" for="last_name">Last Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" name="lname">
+                        <input type="text" class="form-control" id="last_name" formControlname="last_name"
+                            placeholder="Enter Last Name" name="last_name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="email">Email:</label>
+                    <label class="control-label col-sm-2 required" for="email">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                        <input type="email" class="form-control" formControlName="email" id="email"
+                            placeholder="Enter email" name="email">
+
+                        <div *ngIf="formControl.email.invalid && (formControl.email.dirty || formControl.email.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="formControl.email.errors.required">
+                                Email is required.
+                            </div>
+                            <div *ngIf="formControl.email.errors.pattern">
+                                Email must be valid.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="comment">Comment:</label>
+                    <label class="control-label col-sm-2 required" for="comment">Comment</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" rows="5" id="comment"></textarea>
+                        <textarea class="form-control" rows="5" id="comment" name="comment"
+                            formControlName="comment"></textarea>
+
+                        <div *ngIf="formControl.comment.invalid && (formControl.comment.dirty || formControl.comment.touched)"
+                            class="alert alert-danger">
+
+                            <div *ngIf="formControl.comment.errors.required">
+                                Comment is required.
+                            </div>
+                            <div *ngIf="formControl.comment.errors.minlength">
+                                Comment must be at least 4 characters long.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,7 +76,7 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

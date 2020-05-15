@@ -1,6 +1,8 @@
 <div class="video-player" [ngClass]="!isModal?'p-10':''">
     <div class="video-container" *ngIf="!playVideo">
-        <img alt="Snow" src="../../../assets/images/{{image}}" [ngClass]="isModal?'card-img-top':'image  mh-100'">
+        <img *ngIf="image" alt="Error" src="{{image}}" [ngClass]="isModal?'card-img-top':'image  mh-100'">
+        <img *ngIf="!image" alt="Loading .." [src]="logo | safehtml"
+            [ngClass]="isModal?'card-img-top':'image mh-100'" />
         <button class="btn btn-play" (click)="isModal?open(mymodal):play()"><i
                 class="ag-media-play btn-player"></i></button>
     </div>

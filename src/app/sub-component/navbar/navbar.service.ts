@@ -9,6 +9,8 @@ export class NavbarService {
     isName: string = '';
     type: string = '';
     search: string = '';
+    searchTopics: any = [];
+    searchVideoes: any = [];
 
     constructor() {
         this.visible = false;

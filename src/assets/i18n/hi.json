@@ -2,11 +2,15 @@
     "home": "नियंत्रण-पट्ट",
     "lang": "भाषा",
     "type": "प्रकार",
+    "filter": "फिल्टर",
     "signin": "साइन इन करें",
     "search-placeholder": "खोज",
     "search-button": "जाओ",
     "profile": "पार्श्वचित्र",
     "signout": "प्रस्थान करें",
     "animal": "जानवर",
-    "crop": "फसल"
+    "crop": "फसल",
+    "fertilizer": "उर्वरक",
+    "pesticides": "कीटनाशकों",
+    "all": "सब"
 }
