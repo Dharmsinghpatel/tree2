@@ -21,11 +21,11 @@ export class ContactUsComponent implements OnInit {
     this.header.hide();
     this.form = this.formBuilder.group({
       first_name: [null, [
-        // Validators.required,
+        Validators.required,
         Validators.minLength(4)]],
       last_name: [null],
       email: [null, [Validators.required,
-        // Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})')
+      Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})')
       ]],
       comment: [null, [Validators.required, Validators.minLength(4)]],
     });

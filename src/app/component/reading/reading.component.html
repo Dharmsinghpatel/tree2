@@ -18,49 +18,67 @@
 <div *ngIf="isTopic" class="p-10">
     <div *ngFor="let content of topic?.detail;let i=index">
         <div [ngSwitch]="content?.type">
-            <div *ngSwitchCase="'description'">
+            <div *ngSwitchCase="'description'" class="mt-10">
                 <p [innerHTML]="content?.description"></p>
             </div>
 
-            <div *ngSwitchCase="'image'">
+            <div *ngSwitchCase="'image'" class="mt-10">
                 <img class="card-img-top" src="{{content?.image_url}}" alt="{{content.title}}">
                 <p class="mt-10 pull-center">{{content?.title}}</p>
             </div>
 
-            <div *ngSwitchCase="'video'">
+            <div *ngSwitchCase="'video'" class="mt-10">
                 <app-youtube-player [youtube-id]="content.video_url" [image]="content.image_url" [id]="i"
                     [is-modal]="isModal">
                 </app-youtube-player>
             </div>
 
-            <div *ngSwitchCase="'site'">
-                <p class="mt-10 pull-left">
-                    <a href="{{content.image_url}}" target="_blank" class="c-font-blue">{{content?.title}}</a>
-                </p>
+            <div *ngSwitchCase="'site'" class="mt-10">
+                <div id="accordion" class="accordion" (click)="navigate('external',content.image_url)">
+                    <div class="card mt-10">
+                        <div class="card-header card-forward collapsed border-bottom-0 ">
+                            <a class="card-title title">
+                                {{content?.title}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'document'" class="mt-10">
+                <div id="accordion" class="accordion" (click)="navigate(content.display_type,content.document_id)">
+                    <div class="card mt-10">
+                        <div class="card-header card-forward collapsed border-bottom-0 ">
+                            <a class="card-title title">
+                                {{content?.title}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div *ngSwitchCase="'topic'">
                 <div id="accordion" class="accordion">
                     <div class="card mt-10">
-                        <div class="card-header collapsed" data-toggle="collapse" [attr.href]="'#collapse'+i">
+                        <div class="card-header card-toggle collapsed border-bottom-0" data-toggle="collapse"
+                            [attr.href]="'#collapse'+i">
                             <a class="card-title title">
                                 {{content?.sub_topics.title}}
                             </a>
-                            <i class="icon-plus pull-right"></i>
                         </div>
                         <div id="collapse{{i}}" class="card-body collapse" data-parent="#accordion">
                             <div *ngFor="let content of content?.sub_topics.detail;let cI=index">
                                 <div [ngSwitch]="content?.type">
-                                    <div *ngSwitchCase="'description'">
+                                    <div *ngSwitchCase="'description'" class="mt-10">
                                         <p [innerHTML]="content?.description"></p>
                                     </div>
 
-                                    <div *ngSwitchCase="'image'">
+                                    <div *ngSwitchCase="'image'" class="mt-10">
                                         <img class="card-img-top" src="{{content?.image_url}}" alt="{{content.title}}">
                                         <p class="mt-10 pull-center">{{content?.title}}</p>
                                     </div>
 
-                                    <div *ngSwitchCase="'video'">
+                                    <div *ngSwitchCase="'video'" class="mt-10">
                                         <app-youtube-player [youtube-id]="content.video_url" [image]="content.image_url"
                                             [id]="i" [is-modal]="isModal">
                                         </app-youtube-player>

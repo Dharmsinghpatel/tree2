@@ -16,6 +16,7 @@ export class FloattabComponent {
   title = 'demo-project';
   mainData: any;
   closeResult: string;
+  lang: string = 'en';
 
   constructor(public api: ApiService,
     public router: Router, public header: HeaderService,
@@ -23,8 +24,15 @@ export class FloattabComponent {
     private modalService: NgbModal,
     public carsl: CarouselService,
     public floattab: FloattabService) {
-    this.translate.addLangs(['en', 'hi', 'hg']);
-    this.translate.setDefaultLang('en');
+
+  }
+
+  ngOnInit() {
+
+    let lang = localStorage.getItem('lang');
+    this.lang = lang ? lang : 'en';
+
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', this.lang)
   }
 
   ngDoCheck() {
@@ -32,7 +40,7 @@ export class FloattabComponent {
   }
 
   switchLang(lang: string) {
-    console.log(lang);
+    localStorage.setItem('lang', lang)
     this.translate.use(lang);
   }
 

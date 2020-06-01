@@ -13,13 +13,7 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
             // request = request.clone({});
             request = request.clone({
                 headers: new HttpHeaders({
-                    // 'Content-Type': 'text/plain',
-                    // 'Access-Control-Allow-Origin': '*',
-                    // 'Access-Control-Allow-Origin': 'http://localhost:4200'
-                    // 'Access-Control-Allow-Credentials': 'true',
-                    // 'Access-Control-Allow-Headers': 'Content-Type',
-                    // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-                    // 'key': 'x-api-key',
+                    'Authorization': 'ZWhnanhmLGtsLnhmZzU0NjU2NDU2MzQ1YDIxMz0wLSdbLy51aW9pZGZ0dHR5dQ==',
                 })
             });
         }

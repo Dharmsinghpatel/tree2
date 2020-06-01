@@ -21,26 +21,25 @@
 }
 
 .float-icon {
-    border: 2px solid $c-primary;
+    // border: 1px solid $c-primary;
     border-radius: 50px;
     text-align: center;
-    color: $c-font-white;
-    width: 30px;
-    height: 30px;
-    background: $c-primary;
+    color: $c-font-primary;
+    width: 25px;
+    height: 25px;
+    background: $c-white;
     text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
 /* mouse over link */
 .float-icon:hover{
-    border: 2px solid $c-secondary;
     color: $c-font-white;
-    background: $c-secondary;
+    background: $c-primary;
 }
 
 /* mouse over link */
 .float-icon:focus{
-    border: 2px solid $c-secondary;
     color: $c-font-white;
-    background: $c-secondary;
+    background: $c-primary;
 }

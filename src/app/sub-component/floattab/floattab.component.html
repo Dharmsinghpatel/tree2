@@ -1,5 +1,5 @@
 <a *ngIf="floattab.isBack" href="javascript:void(0)" class="float float-one float-icon"
-    routerLink="/{{floattab.backNav}}"><i class="ag-cancel"></i></a>
+    routerLink="/{{floattab.backNav}}"><i class="ag-times"></i></a>
 
 <a href="javascript:void(0)" class="float float-two float-icon" routerLink="/home"><i class="ag-home"></i></a>
 
@@ -16,19 +16,20 @@
     </div>
     <div class="modal-body">
         <p class="title">Do you want to change language?</p>
+        <p class="title">क्या आप भाषा बदलना चाहते हैं?</p>
         <div>
             <label class="radio-container">English
-                <input type="radio" name="radio" value="eng" (change)="switchLang('en')">
+                <input type="radio" name="radio" (change)="switchLang('en')" [checked]="lang=='en'?true:false">
                 <span class="checkmark"></span>
             </label>
-            <label class="radio-container" value="hi" (change)="switchLang('hi')">हिन्दी
+            <label class="radio-container">हिन्दी
+                <input type="radio" name="radio" (change)="switchLang('hi')" [checked]="lang=='hi'?true:false">
+                <span class="checkmark"></span>
+            </label>
+            <!-- <label class="radio-container" value="hg" (change)="switchLang('hg')">Hinglish
                 <input type="radio" name="radio">
                 <span class="checkmark"></span>
-            </label>
-            <label class="radio-container" value="hg" (change)="switchLang('hg')">Hinglish
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-            </label>
+            </label> -->
         </div>
     </div>
     <div class="modal-footer">

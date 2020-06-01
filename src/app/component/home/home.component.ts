@@ -12,7 +12,8 @@ import { NavbarService } from 'src/app/sub-component/navbar/navbar.service';
 })
 export class HomeComponent implements OnInit {
   info: any;
-  read: any;
+  blogs: any;
+  infos: any;
   news: any;
   resources: any;
   constructor(public api: ApiService, public carsl: CarouselService,
@@ -27,10 +28,11 @@ export class HomeComponent implements OnInit {
     this.api.getDashboard().subscribe(res => {
       if (res.status == 'success') {
         const dash = res.data;
-        this.info = dash['info']
-        this.news = dash['news']
-        this.read = dash['read']
-        this.resources = dash['resources']
+        this.info = dash['info'];
+        this.infos = dash['infos'];
+        this.news = dash['news'];
+        this.blogs = dash['blogs'];
+        this.resources = dash['resources'];
 
         this.carsl.setAdvertise(dash['carousel']);
       }
@@ -40,8 +42,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  readEvent(event: any) {
-    this.router.navigate(['/read', event]).then(nav => {
+  blogEvent(event: any) {
+    this.router.navigate(['/blog', event]).then(nav => {
       console.log('Nav>>', nav);
     }, err => {
       console.log('NAv Eroor>>', err)

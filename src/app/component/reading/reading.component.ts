@@ -24,7 +24,7 @@ export class ReadingComponent implements OnInit {
     public navbar: NavbarService,
     public floattab: FloattabService) {
     this.header.show();
-    this.header.title = 'Loading ...'
+    this.header.title = 'loading'
   }
 
   ngOnInit(): void {
@@ -44,7 +44,6 @@ export class ReadingComponent implements OnInit {
               this.navbar.isSearch = false;
               this.navbar.isType = false;
               this.floattab.isBack = true;
-              console.log(routeData)
               this.floattab.backNav = routeData.type;
             }
           })
@@ -71,11 +70,12 @@ export class ReadingComponent implements OnInit {
   }
 
   navigate(type: string, id: string) {
-    this.router.navigate(['/' + type, id]).then(nav => {
-      console.log('Nav>>', nav);
-    }, err => {
-      console.log('NAv Eroor>>', err)
-    })
+    if (type != 'external') {
+      console.log('type>>', type, id);
+      this.router.navigate(['/' + type, id]);
+    } else {
+      window.open(id, "_blank");
+    }
   }
 
   ngOnDestroy() {

@@ -39,8 +39,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    let lang = localStorage.getItem('lang');
+    lang = lang ? lang : 'en';
     this.translate.addLangs(['en', 'hi', 'hg']);
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang(lang);
   }
 
   sideToggle() {
@@ -48,12 +50,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngDoCheck() {
+    let lang = localStorage.getItem('lang');
+    lang = lang ? lang : 'en';
     this.navService = this.navbar;
-  }
-
-  switchLang(lang: string) {
-    console.log(lang);
-    this.translate.use(lang);
   }
 
   getDropdown(value) {

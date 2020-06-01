@@ -8,7 +8,9 @@
       <div class="" id="navbarSupportedContent">
         <ul class="pull-right" *ngIf="navService?.isName!=''">
           <li class="nav-item active">
-            <a class="nav-link" href="javascript:void(0)">{{navService?.isName}}<span
+            <!-- <a class="nav-link" href="javascript:void(0)">{{navService?.isName}}<span
+                class="sr-only">(current)</span></a> -->
+            <a class="nav-link" href="javascript:void(0)">{{'welcome' | translate}}<span
                 class="sr-only">(current)</span></a>
           </li>
         </ul>
@@ -20,18 +22,18 @@
 
             <div class="input-group-append">
               <button id="select_button" class="btn btn-secondary dropdown-toggle text-capitalize" type="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'Filter' | translate}}</button>
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'filter' | translate}}</button>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="javascript:void(0)"
                   (click)="getDropdown('all')">{{'all' | translate}}</a>
                 <a class="dropdown-item" href="javascript:void(0)"
                   (click)="getDropdown('animal')">{{'animal' | translate}}</a>
                 <a class="dropdown-item" href="javascript:void(0)"
-                  (click)="getDropdown('crop')">{{ 'Crop' | translate}}</a>
+                  (click)="getDropdown('crop')">{{ 'crop' | translate}}</a>
                 <a class="dropdown-item" href="javascript:void(0)"
-                  (click)="getDropdown('fertilizer')">{{ 'Fertilizer' | translate}}</a>
+                  (click)="getDropdown('fertilizer')">{{ 'fertilizer' | translate}}</a>
                 <a class="dropdown-item" href="javascript:void(0)"
-                  (click)="getDropdown('pesticides')">{{ 'Pesticides' | translate}}</a>
+                  (click)="getDropdown('pesticides')">{{ 'pesticides' | translate}}</a>
               </div>
             </div>
             <div class="input-group-append">
@@ -43,112 +45,3 @@
     </nav>
   </div>
 </div>
-
-<!-- <div class="custom-navbar">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="javascript:void(0)" routerLink="/home">
-        <img width="40" alt="Angular Logo"
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-        Agri Arbor</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="javascript:void(0)" routerLink="/home">{{'home' | translate }} <span
-                class="sr-only">(current)</span></a>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="lang" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              {{'lang' | translate}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="javascript:void(0)" (click)="switchLang('en')">English</a>
-              <a class="dropdown-item" href="javascript:void(0)" (click)="switchLang('hi')">हिन्दी</a>
-              <a class="dropdown-item" href="javascript:void(0)" (click)="switchLang('hg')">Hinglish</a>
-            </div>
-          </li>
-
-          <li class="nav-item dropdown" *ngIf="navService?.isSigIn">
-            <a class="nav-link" href="#" id="account" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              Account
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">{{'profile' | translate}}</a>
-              <a class="dropdown-item" href="#">{{'signout' | translate}}</a>
-            </div>
-          </li>
-
-          <li class="nav-item dropdown" *ngIf="navService?.isType">
-            <a class="nav-link" href="#" id="type" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              {{'type' | translate}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">{{'animal' | translate}}</a>
-              <a class="dropdown-item" href="#">{{ 'crop' | translate}}</a>
-            </div>
-          </li>
-
-          <li class="nav-item" *ngIf="!navService?.isSigIn">
-            <a class="nav-link" href="javascript:void(0)" (click)="open(mymodal)">{{'signin' | translate}} </a>
-          </li>
-        </ul>
-
-        <form class="my-2 my-lg-0" *ngIf="navService?.isSearch" [formGroup]="searchForm">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{'search-placeholder' | translate}}"
-              formControlName="search" name="search">
-            <div class="input-group-append">
-              <button class="btn btn-success" (click)="onSubmit()">{{'search-button' | translate}}</button>
-            </div>
-          </div>
-
-
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="{{'search-placeholder' | translate}}"
-              formControlName="search" name="search">
-            <div class="input-group-append">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">{{'type' | translate}}</button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:void(0)">{{'animal' | translate}}</a>
-                <a class="dropdown-item" href="javascript:void(0)">{{ 'crop' | translate}}</a>
-              </div>
-            </div>
-            <div class="input-group-append">
-              <button class="btn btn-success" (click)="onSubmit()">{{'search-button' | translate}}</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </nav>
-  </div>
-</div> -->
-
-<!-- <ng-template #mymodal let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    This is example from ItSolutionStuff.com
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
-  </div>
-</ng-template> -->
-
-<!-- <app-sidebar></app-sidebar> -->

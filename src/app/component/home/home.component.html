@@ -1,7 +1,7 @@
 <!-- #1 start -->
-<div class="info" *ngIf="info">
+<div class="info" *ngIf="(info && info[0]) else loading">
   <div class="title-block">
-    <p class="title-text">{{info[0].title}}</p>
+    <p class="title-text">{{info[0]?.title}}</p>
   </div>
 
   <p class="description" [innerHTML]="info[0].description"></p>
@@ -15,34 +15,34 @@
 <!-- #1 end -->
 
 <!-- #2 start reading-->
-<div class="row-content">
+<div class="row-content" *ngIf="(blogs && blogs[0]) else loading">
   <div class="title-block">
-    <p class="title-text">Read and Learn</p>
+    <p class="title-text">{{'read_learn' | translate}}</p>
   </div>
 
-  <div class="row" *ngIf="read">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let reading of read">
-      <div class="card card-border" (click)="navigate('document',reading?.id)">
-        <img class="card-img-top" src="{{reading?.image_url}}" alt="{{reading?.file_name}}">
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let blog of blogs">
+      <div class="card card-border" (click)="navigate('blog',blog?.id)">
+        <img class="card-img-top" src="{{blog?.image_url}}" alt="{{blog?.file_name}}">
         <div class="card-body card-text-bold">
-          <h5 *ngIf="reading.title" class="card-title">{{reading.title}}</h5>
-          <p class="card-text" [innerHTML]="reading.description"></p>
+          <h5 *ngIf="blog.title" class="card-title">{{blog.title}}</h5>
+          <p class="card-text" [innerHTML]="blog.description"></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/document"><i class="ag-arrow-right-thick"></i></button>
+    <button type="button" class="btn btn-primary" routerLink="/blog"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
 <hr>
 <!-- #2 end -->
 
 <!-- #3 start -->
-<div class="info" *ngIf="info">
+<div class="info" *ngIf="(info && info[1]) else loading">
   <div class="title-block">
-    <p class="title-text">{{info[1].title}}</p>
+    <p class="title-text">{{info[1]?.title}}</p>
   </div>
 
   <p class="description" [innerHTML]="info[1].description"></p>
@@ -55,42 +55,38 @@
 <hr>
 <!-- #3 end -->
 
-<!-- #4 start video -->
-<div class="row-content" *ngIf="resources">
+<!-- #4 start reading-->
+<div class="row-content" *ngIf="(infos && infos[0]) else loading">
   <div class="title-block">
-    <p class="title-text">Time to Watch, Work</p>
+    <p class="title-text">{{'do_know' | translate}}</p>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let video of resources;let i=index">
-      <div class="card card-border">
-        <div class="card-img-top">
-          <app-youtube-player [youtube-id]="video.link" [image]="video.image_url" [id]="i"></app-youtube-player>
-        </div>
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let info of infos">
+      <div class="card card-border" (click)="navigate('document',info?.id)">
+        <img class="card-img-top" src="{{info?.image_url}}" alt="{{info?.file_name}}">
         <div class="card-body card-text-bold">
-          <!-- <h5 *ngIf="video.title" class="card-title">{{video.title}}</h5> -->
-          <p class="card-text">{{video.description}}</p>
+          <h5 *ngIf="info.title" class="card-title">{{info.title}}</h5>
+          <p class="card-text" [innerHTML]="info.description"></p>
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/video"><i class="ag-arrow-right-thick"></i></button>
+    <button type="button" class="btn btn-primary" routerLink="/document"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
 <hr>
 <!-- #4 end -->
 
 <!-- #5 start -->
-<div class="info" *ngIf="info">
+<div class="info" *ngIf="(info && info[2]) else loading">
   <div class="title-block">
     <p class="title-text">{{info[2].title}}</p>
   </div>
 
-  <p class="description" [innerHTML]="info[2].description">
-  </p>
+  <p class="description" [innerHTML]="info[2].description"></p>
 
   <div class="read-block pull-right">
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[2].id)"><i
@@ -100,10 +96,53 @@
 <hr>
 <!-- #5 end -->
 
-<!-- #6 start news -->
-<div class="row-content">
+<!-- #6 start video -->
+<div class="row-content" *ngIf="(resources &&  resources[0]) else loading">
   <div class="title-block">
-    <p class="title-text">Connent to World</p>
+    <p class="title-text">{{'time_watch' | translate}}</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let video of resources;let i=index">
+      <div class="card card-border">
+        <div class="card-img-top">
+          <app-youtube-player [youtube-id]="video.link" [image]="video.image_url" [id]="i"></app-youtube-player>
+        </div>
+        <div class="card-body card-text-bold">
+          <p class="card-text">{{video.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary" routerLink="/video"><i class="ag-arrow-right-thick"></i></button>
+  </div>
+</div>
+<hr>
+<!-- #6 end -->
+
+<!-- #7 start -->
+<div class="info" *ngIf="(info && info[3]) else loading">
+  <div class="title-block">
+    <p class="title-text">{{info[3].title}}</p>
+  </div>
+
+  <p class="description" [innerHTML]="info[3].description">
+  </p>
+
+  <div class="read-block pull-right">
+    <button type="button" class="btn btn-primary" (click)="navigate('info',info[3].id)"><i
+        class="ag-arrow-right-thick"></i></button>
+  </div>
+</div>
+<hr>
+<!-- #7 end -->
+
+<!-- #8 start news -->
+<div class="row-content" *ngIf="(news && news[0]) else loading">
+  <div class="title-block">
+    <p class="title-text">{{'connect_world' | translate}}</p>
   </div>
 
   <div class="row" *ngIf="news">
@@ -123,21 +162,31 @@
   </div>
 </div>
 <hr>
-<!-- #6 end -->
+<!-- #8 end -->
 
-<!-- #7 start -->
-<div class="info" *ngIf="info">
+<!-- #9 start -->
+<div class="info" *ngIf="(info && info[4]) else loading">
   <div class="title-block">
-    <p class="title-text">{{info[3].title}}</p>
+    <p class="title-text">{{info[4].title}}</p>
   </div>
 
-  <p class="description" [innerHTML]="info[3].description">
+  <p class="description" [innerHTML]="info[4].description">
   </p>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" (click)="navigate('info',info[3].id)"><i
+    <button type="button" class="btn btn-primary" (click)="navigate('info',info[4].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
 <hr>
-<!-- #7 end -->
+<!-- #9 end -->
+
+
+<ng-template #loading>
+  <div class="info">
+    <div class="title-block">
+      <p class="title-text">{{'comming_soon' | translate}}</p>
+      <p class="description">{{'no_available' | translate}}</p>
+    </div>
+  </div>
+</ng-template>

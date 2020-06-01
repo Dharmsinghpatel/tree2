@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CarouselService } from './carousel.service';
 import { ApiService } from 'src/service/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-carousel',
@@ -9,7 +11,11 @@ import { ApiService } from 'src/service/api.service';
 })
 export class CarouselComponent implements OnInit {
   advs: any;
-  constructor(public carsl: CarouselService, public api: ApiService) {
+  constructor(public carsl: CarouselService,
+    public api: ApiService,
+    public route: ActivatedRoute,
+    public router: Router,
+  ) {
   }
 
   ngOnInit() {
@@ -18,6 +24,13 @@ export class CarouselComponent implements OnInit {
   ngDoCheck() {
     this.advs = this.carsl.getAdvetise();
     console.log(this.advs, this.carsl.visible);
+  }
+
+  openDoc(link) {
+    if (link != undefined && link != null && link != '') {
+      Number(link) ? this.router.navigate(['/info', link]) :
+        window.open(link, "_blank");
+    }
   }
 
 }

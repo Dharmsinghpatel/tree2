@@ -105,14 +105,21 @@ ul {
     font-weight: $regular;
 }
 
-/* accordion */
-.accordion .card-header:after {
+/* accordion toggle plus minus*/
+.accordion .card-toggle:after {
     font-family: $icon-font;  
     content: "\e903";
     float: right; 
 }
-.accordion .card-header.collapsed:after {
+.accordion .card-toggle.collapsed:after {
     content: "\e902";
+}
+
+/* accordion farword*/
+.accordion .card-forward:after {
+    font-family: $icon-font;  
+    content: "\e912";
+    float: right; 
 }
 
 .accordion > .card > .card-header {
@@ -204,7 +211,7 @@ ul {
 
   .card img {
     width: 100%;
-    max-height: 135px;
+    // max-height: 135px;
   }
   .card-title{
     margin-bottom:0;
@@ -232,7 +239,7 @@ ul {
   }
   
   .video-container .btn:hover {
-    background-color: $c-gray;
+    color: $c-font-primary;
   }
 
   .video-player{
@@ -268,8 +275,8 @@ ul {
 
 /*Button */
 .btn-primary {
-  color: $c-font-white;
-  background-color:$c-primary;
+  color: $c-font-primary;
+  background-color:$c-white;
   border-color: $c-primary;
   border-radius: 50px;
 }
@@ -311,8 +318,15 @@ primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):
   color: $c-font-dark-black;
 }
 
-a, a:hover {
+a{
   color: $c-font-white;
+  font-weight: $medium;
+  font-size:$primary-fs;
+  text-decoration: none;
+  background-color: transparent;
+}
+a:hover {
+  color: $c-font-primary;
   font-weight: $medium;
   font-size:$primary-fs;
   text-decoration: none;
@@ -322,4 +336,12 @@ a, a:hover {
 .required:after {
   content:" *";
   color: red;
+}
+
+/* 
+  remove modal cross button outline
+*/
+button:focus {
+  outline: 0px;
+  outline: 0px auto -webkit-focus-ring-color;
 }

@@ -10,7 +10,17 @@
     "signout": "Sign Out",
     "animal": "Animal",
     "crop": "Crop",
-    "fertilizer": "fertilizer",
-    "pesticides": "pesticides",
-    "all": "all"
+    "fertilizer": "Fertilizer",
+    "pesticides": "Pesticides",
+    "all": "All",
+    "about_us": "About Us",
+    "contact_us": "Contact Us",
+    "welcome": "Welcome to You!",
+    "comming_soon": "Comming Soon...",
+    "no_available": "No Content Available!",
+    "read_learn": "Read And Learn",
+    "time_watch": "Time to Watch, Work",
+    "connect_world": "Connect to World",
+    "do_know": "Do You Know?",
+    "loading": "Loading..."
 }

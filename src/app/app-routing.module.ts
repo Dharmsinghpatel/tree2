@@ -9,8 +9,8 @@ import { AboutUsComponent } from './component/about-us/about-us.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'document', component: ReadingComponent, data: { type: 'document' } },
-  { path: 'document/:id', component: ReadingComponent, data: { type: 'document' } },
+  { path: 'blog', component: ReadingComponent, data: { type: 'blog' } },
+  { path: 'blog/:id', component: ReadingComponent, data: { type: 'blog' } },
   { path: 'video', component: VideoComponent, data: { type: 'video' } },
   { path: 'video/:id', component: VideoComponent, data: { type: 'video' } },
   { path: 'info', component: ReadingComponent, data: { type: 'info' } },
