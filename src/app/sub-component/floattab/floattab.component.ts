@@ -28,11 +28,8 @@ export class FloattabComponent {
   }
 
   ngOnInit() {
-
     let lang = localStorage.getItem('lang');
     this.lang = lang ? lang : 'en';
-
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', this.lang)
   }
 
   ngDoCheck() {
@@ -40,7 +37,8 @@ export class FloattabComponent {
   }
 
   switchLang(lang: string) {
-    localStorage.setItem('lang', lang)
+    localStorage.setItem('lang', lang);
+    this.lang = lang;
     this.translate.use(lang);
   }
 

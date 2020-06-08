@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'info/:id', component: ReadingComponent, data: { type: 'info' } },
   { path: 'news', component: ReadingComponent, data: { type: 'news' } },
   { path: 'news/:id', component: ReadingComponent, data: { type: 'news' } },
-  { path: 'contant', component: ContactUsComponent },
+  { path: 'contact', component: ContactUsComponent },
   { path: 'about', component: AboutUsComponent },
   { path: '**', redirectTo: '/home' }
 ];

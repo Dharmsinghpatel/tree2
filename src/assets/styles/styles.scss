@@ -345,3 +345,10 @@ button:focus {
   outline: 0px;
   outline: 0px auto -webkit-focus-ring-color;
 }
+
+@media (min-width: 576px){
+  .modal-dialog {
+      max-width: 665px;
+      margin: 1.75rem auto;
+  }
+}

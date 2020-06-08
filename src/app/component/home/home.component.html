@@ -15,25 +15,25 @@
 <!-- #1 end -->
 
 <!-- #2 start reading-->
-<div class="row-content" *ngIf="(blogs && blogs[0]) else loading">
+<div class="row-content" *ngIf="(infos && infos[0]) else loading">
   <div class="title-block">
-    <p class="title-text">{{'read_learn' | translate}}</p>
+    <p class="title-text">{{'do_know' | translate}}</p>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let blog of blogs">
-      <div class="card card-border" (click)="navigate('blog',blog?.id)">
-        <img class="card-img-top" src="{{blog?.image_url}}" alt="{{blog?.file_name}}">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let info of infos">
+      <div class="card card-border" (click)="navigate('info',info?.id)">
+        <img class="card-img-top" src="{{info?.image_url}}" alt="{{info?.file_name}}">
         <div class="card-body card-text-bold">
-          <h5 *ngIf="blog.title" class="card-title">{{blog.title}}</h5>
-          <p class="card-text" [innerHTML]="blog.description"></p>
+          <h5 *ngIf="info.title" class="card-title">{{info.title}}</h5>
+          <p class="card-text" [innerHTML]="info.description"></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/blog"><i class="ag-arrow-right-thick"></i></button>
+    <button type="button" class="btn btn-primary" routerLink="/info"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
 <hr>
@@ -56,25 +56,25 @@
 <!-- #3 end -->
 
 <!-- #4 start reading-->
-<div class="row-content" *ngIf="(infos && infos[0]) else loading">
+<div class="row-content" *ngIf="(blogs && blogs[0]) else loading">
   <div class="title-block">
-    <p class="title-text">{{'do_know' | translate}}</p>
+    <p class="title-text">{{'read_learn' | translate}}</p>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let info of infos">
-      <div class="card card-border" (click)="navigate('document',info?.id)">
-        <img class="card-img-top" src="{{info?.image_url}}" alt="{{info?.file_name}}">
+    <div class="col-md-3 col-sm-4 col-12" *ngFor="let blog of blogs">
+      <div class="card card-border" (click)="navigate('blog',blog?.id)">
+        <img class="card-img-top" src="{{blog?.image_url}}" alt="{{blog?.file_name}}">
         <div class="card-body card-text-bold">
-          <h5 *ngIf="info.title" class="card-title">{{info.title}}</h5>
-          <p class="card-text" [innerHTML]="info.description"></p>
+          <h5 *ngIf="blog.title" class="card-title">{{blog.title}}</h5>
+          <p class="card-text" [innerHTML]="blog.description"></p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/document"><i class="ag-arrow-right-thick"></i></button>
+    <button type="button" class="btn btn-primary" routerLink="/blog"><i class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
 <hr>
@@ -178,7 +178,6 @@
         class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
-<hr>
 <!-- #9 end -->
 
 

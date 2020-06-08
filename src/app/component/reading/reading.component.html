@@ -16,6 +16,11 @@
 </div>
 
 <div *ngIf="isTopic" class="p-10">
+    <div class="mt-10 pull-center">
+        <img src="{{topic?.icon}}" alt="{{topic?.product_name}}">
+        <p class="mt-10">{{topic?.product_name}}</p>
+    </div>
+
     <div *ngFor="let content of topic?.detail;let i=index">
         <div [ngSwitch]="content?.type">
             <div *ngSwitchCase="'description'" class="mt-10">
@@ -92,3 +97,4 @@
             </div>
         </div>
     </div>
+</div>

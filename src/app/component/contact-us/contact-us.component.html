@@ -3,58 +3,58 @@
         <div class="col-md-3">
             <div class="contact-info">
                 <img src="../../../assets/images/contact-image.png" alt="Message" />
-                <h2>Contact Us</h2>
-                <h4>We would love to hear from you !</h4>
+                <h2>{{'contact_us' | translate}}</h2>
+                <h4>{{'contact.description' | translate }}</h4>
             </div>
         </div>
         <div class="col-md-9">
             <form [formGroup]="form" class="contact-form" (ngSubmit)="send()">
                 <div class="form-group">
 
-                    <label class="control-label col-sm-2 required" for="first_name">First Name</label>
+                    <label class="control-label col-sm-2 required" for="first_name">{{'first_name' | translate}}</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="first_name" id="first_name"
-                            formControlName="first_name" placeholder="Enter First Name">
+                            formControlName="first_name" placeholder="{{'first_name' | translate}}">
 
                         <div *ngIf="formControl.first_name.invalid && (formControl.first_name.dirty || formControl.first_name.touched)"
                             class="alert alert-danger">
 
                             <div *ngIf="formControl.first_name.errors.required">
-                                First Name is required.
+                                {{'contact.first_name_required' | translate}}
                             </div>
                             <div *ngIf="formControl.first_name.errors.minlength">
-                                Fisrt Name must be at least 4 characters long.
+                                {{'contact.first_name_error' | translate}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="last_name">Last Name</label>
+                    <label class="control-label col-sm-2" for="last_name">{{'last_name' | translate}}</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="last_name" formControlname="last_name"
-                            placeholder="Enter Last Name" name="last_name">
+                        <input type="text" class="form-control" name="last_name" id="last_name"
+                            formControlName="last_name" placeholder="{{'last_name' | translate}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2 required" for="email">Email</label>
+                    <label class="control-label col-sm-2 required" for="email">{{'email' | translate}}</label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" formControlName="email" id="email"
-                            placeholder="Enter email" name="email">
+                            placeholder="{{'email' | translate}}" name="email">
 
                         <div *ngIf="formControl.email.invalid && (formControl.email.dirty || formControl.email.touched)"
                             class="alert alert-danger">
 
                             <div *ngIf="formControl.email.errors.required">
-                                Email is required.
+                                {{'contact.email_required' | translate}}
                             </div>
                             <div *ngIf="formControl.email.errors.pattern">
-                                Email must be valid.
+                                {{'contact.email_error' | translate}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2 required" for="comment">Comment</label>
+                    <label class="control-label col-sm-2 required" for="comment">{{'comment' | translate}}</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" rows="5" id="comment" name="comment"
                             formControlName="comment"></textarea>
@@ -63,17 +63,18 @@
                             class="alert alert-danger">
 
                             <div *ngIf="formControl.comment.errors.required">
-                                Comment is required.
+                                {{'contact.comment_required' | translate}}
+
                             </div>
                             <div *ngIf="formControl.comment.errors.minlength">
-                                Comment must be at least 4 characters long.
+                                {{'contact.comment_error' | translate}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-default">{{'send' | translate}}</button>
                     </div>
                 </div>
             </form>

@@ -28,8 +28,9 @@ export class CarouselComponent implements OnInit {
 
   openDoc(link) {
     if (link != undefined && link != null && link != '') {
-      Number(link) ? this.router.navigate(['/info', link]) :
-        window.open(link, "_blank");
+      link.indexOf('http') > -1 ? window.open(link, "_blank") :
+        this.router.navigate(['/info', link]);
+
     }
   }
 

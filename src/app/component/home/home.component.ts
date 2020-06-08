@@ -42,15 +42,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  blogEvent(event: any) {
-    this.router.navigate(['/blog', event]).then(nav => {
-      console.log('Nav>>', nav);
-    }, err => {
-      console.log('NAv Eroor>>', err)
-    })
-  }
+  // blogEvent(event: any) {
+  //   this.router.navigate(['/blog', event]);
+  // }
 
   navigate(type: string, id: string) {
+    console.log(type, id);
     this.router.navigate(['/' + type, id]).then(nav => {
       console.log('Nav>>', nav);
     }, err => {

@@ -15,7 +15,7 @@
     color: $c-font-dark-black;
 }
 .aboutus-title::after {
-    background: $c-yellow none repeat scroll 0 0;
+    background: $c-primary none repeat scroll 0 0;
     bottom: 0;
     content: "";
     height: 2px;
@@ -30,8 +30,12 @@
     margin: 0 0 35px;
 }
 
+a {
+    color: $c-font-gray;
+}
+
 a:hover, a:active {
-    color: $c-font-yellow;
+    color: $c-font-black;
     text-decoration: none;
     outline: 0;
 }

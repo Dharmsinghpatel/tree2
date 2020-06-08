@@ -36,6 +36,9 @@ import { AboutUsComponent } from './component/about-us/about-us.component';
 
 //interceptor
 import { MockHttpCalIInterceptor } from '../interceptor/http.interceptor';
+import { CustomLoaderComponent } from './sub-component/custom-loader/custom-loader.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -54,7 +57,8 @@ import { MockHttpCalIInterceptor } from '../interceptor/http.interceptor';
     VideoComponent,
     FloattabComponent,
     ContactUsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    CustomLoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,8 @@ import { MockHttpCalIInterceptor } from '../interceptor/http.interceptor';
     }),
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     CarouselService,

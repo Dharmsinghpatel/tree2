@@ -22,5 +22,23 @@
     "time_watch": "Time to Watch, Work",
     "connect_world": "Connect to World",
     "do_know": "Do You Know?",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "aboutus_title": "About Us",
+    "aboutus_text1": "Welcome to Agri Arbor. We're dedicated to giving you the very best of content related to agriculture.",
+    "aboutus_text2": "We hope you enjoy our products as much as we enjoy giving them to you. If you have any questions or comments, please do not hesitate to press 'contact us'. ",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "comment": "Comment",
+    "send": "Send",
+    "enter": "Enter",
+    "contact": {
+        "description": "We would love to hear from you !",
+        "first_name_required": "First Name is required.",
+        "first_name_error": "First Name must be at least 4 characters long.",
+        "email_required": "Email is required.",
+        "email_error": "Email must be valid.",
+        "comment_required": "Comment is required.",
+        "comment_error": "Comment must be at least 4 characters long."
+    }
 }
