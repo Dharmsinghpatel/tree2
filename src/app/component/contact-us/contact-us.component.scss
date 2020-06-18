@@ -1,14 +1,15 @@
 @import "../../../assets/colors/color.scss";
 @import "../../../assets/font/font.scss";
+@import "../../../assets/styles/media-query.scss";
 
 .contact{
     padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
 }
 .col-md-3{
     background: $c-dwhite;
     padding: 4%;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
 }
 .contact-info{
     margin-top:10%;
@@ -22,8 +23,6 @@
 .col-md-9{
     background:$c-white;
     padding: 3%;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
 }
 .contact-form label{
     font-weight:$medium;
@@ -37,3 +36,10 @@
 .contact-form button:focus{
     box-shadow:none;
 }
+
+@include maxd(771){
+    .contact{
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+  }

@@ -50,7 +50,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngDoCheck() {
-    window.scroll(0, 0);
     let lang = localStorage.getItem('lang');
     lang = lang ? lang : 'en';
     this.navService = this.navbar;

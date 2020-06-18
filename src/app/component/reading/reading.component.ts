@@ -15,7 +15,7 @@ export class ReadingComponent implements OnInit {
   topics: any = [];
   currentRoute = '';
   isTopic: boolean = false;
-  isModal: boolean = false;
+  isModal: boolean = true;
 
   constructor(public header: HeaderService,
     public api: ApiService,
@@ -28,6 +28,7 @@ export class ReadingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.route.data.subscribe(routeData => {
       localStorage.setItem('currentRoute', routeData['type']);
       this.currentRoute = routeData['type'];
@@ -71,8 +72,10 @@ export class ReadingComponent implements OnInit {
 
   navigate(type: string, id: string) {
     if (type != 'external') {
-      console.log('type>>', type, id);
+      // let url = this.router.createUrlTree(['/' + type, id])
+      // window.open(url.toString(), '_blank');
       this.router.navigate(['/' + type, id]);
+
     } else {
       window.open(id, "_blank");
     }

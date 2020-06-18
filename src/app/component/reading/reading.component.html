@@ -18,7 +18,7 @@
 <div *ngIf="isTopic" class="p-10">
     <div class="mt-10 pull-center">
         <img src="{{topic?.icon}}" alt="{{topic?.product_name}}">
-        <p class="mt-10">{{topic?.product_name}}</p>
+        <p class="mt-10 pull-center">{{topic?.product_name}}</p>
     </div>
 
     <div *ngFor="let content of topic?.detail;let i=index">
@@ -27,8 +27,8 @@
                 <p [innerHTML]="content?.description"></p>
             </div>
 
-            <div *ngSwitchCase="'image'" class="mt-10">
-                <img class="card-img-top" src="{{content?.image_url}}" alt="{{content.title}}">
+            <div *ngSwitchCase="'image'" class="mt-10 pull-center">
+                <img src="{{content?.image_url}}" alt="{{content.title}}">
                 <p class="mt-10 pull-center">{{content?.title}}</p>
             </div>
 
@@ -36,6 +36,7 @@
                 <app-youtube-player [youtube-id]="content.video_url" [image]="content.image_url" [id]="i"
                     [is-modal]="isModal">
                 </app-youtube-player>
+                <p class="mt-10 pull-center">{{content?.title}}</p>
             </div>
 
             <div *ngSwitchCase="'site'" class="mt-10">
@@ -78,8 +79,8 @@
                                         <p [innerHTML]="content?.description"></p>
                                     </div>
 
-                                    <div *ngSwitchCase="'image'" class="mt-10">
-                                        <img class="card-img-top" src="{{content?.image_url}}" alt="{{content.title}}">
+                                    <div *ngSwitchCase="'image'" class="mt-10 pull-center">
+                                        <img src="{{content?.image_url}}" alt="{{content.title}}">
                                         <p class="mt-10 pull-center">{{content?.title}}</p>
                                     </div>
 
@@ -87,6 +88,7 @@
                                         <app-youtube-player [youtube-id]="content.video_url" [image]="content.image_url"
                                             [id]="i" [is-modal]="isModal">
                                         </app-youtube-player>
+                                        <p class="mt-10 pull-center">{{content?.title}}</p>
                                     </div>
 
                                 </div>

@@ -1,4 +1,4 @@
-<div class="video-player" [ngClass]="!isModal?'p-10':''">
+<div class="video-player" [ngClass]="!isModal?'p-10':'bg-transparent'">
     <div class="video-container" *ngIf="!playVideo">
         <img *ngIf="image" alt="Error" src="{{image}}" [ngClass]="isModal?'card-img-top':'image  mh-100'">
         <img *ngIf="!image" alt="Loading .." [src]="logo | safehtml"

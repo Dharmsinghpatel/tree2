@@ -14,8 +14,8 @@ export class ApiService {
 
   }
 
-  public getDashboard() {
-    return this.apiCall('dashboard');
+  public getDashboard(data) {
+    return this.apiCall('dashboard', data, 'post');
   }
 
   public analytic(data) {

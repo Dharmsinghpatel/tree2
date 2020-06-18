@@ -32,6 +32,7 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.route.paramMap.subscribe(paramMap => {
       let id = paramMap.get('id');
       if (id != undefined && id != null && id != '') {

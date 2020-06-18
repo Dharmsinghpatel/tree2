@@ -25,7 +25,10 @@ export class HomeComponent implements OnInit {
     this.header.hide();
     this.navService.isName = "Welcome to You!";
 
-    this.api.getDashboard().subscribe(res => {
+    this.api.getDashboard({
+      width: window.innerWidth,
+      height: window.innerHeight
+    }).subscribe(res => {
       if (res.status == 'success') {
         const dash = res.data;
         this.info = dash['info'];
@@ -40,11 +43,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scroll(0, 0);
   }
-
-  // blogEvent(event: any) {
-  //   this.router.navigate(['/blog', event]);
-  // }
 
   navigate(type: string, id: string) {
     console.log(type, id);

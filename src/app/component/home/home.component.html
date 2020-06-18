@@ -1,4 +1,4 @@
-<!-- #1 start -->
+<!-- #1 start info-->
 <div class="info" *ngIf="(info && info[0]) else loading">
   <div class="title-block">
     <p class="title-text">{{info[0]?.title}}</p>
@@ -6,13 +6,15 @@
 
   <p class="description" [innerHTML]="info[0].description"></p>
 
-  <div class="read-block pull-right">
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
+
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[0].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
 </div>
 <hr>
-<!-- #1 end -->
+<!-- #1 end info-->
 
 <!-- #2 start reading-->
 <div class="row-content" *ngIf="(infos && infos[0]) else loading">
@@ -32,14 +34,18 @@
     </div>
   </div>
 
-  <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/info"><i class="ag-arrow-right-thick"></i></button>
+  <div class="d-flex justify-content-between mt-10">
+    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+
+    <button type="button" class="btn btn-primary" routerLink="/info">
+      <i class="ag-arrow-right-thick"></i>
+    </button>
   </div>
 </div>
 <hr>
-<!-- #2 end -->
+<!-- #2 end reading-->
 
-<!-- #3 start -->
+<!-- #3 start info-->
 <div class="info" *ngIf="(info && info[1]) else loading">
   <div class="title-block">
     <p class="title-text">{{info[1]?.title}}</p>
@@ -47,10 +53,13 @@
 
   <p class="description" [innerHTML]="info[1].description"></p>
 
-  <div class="read-block pull-right">
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
+
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[1].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
+
 </div>
 <hr>
 <!-- #3 end -->
@@ -58,7 +67,7 @@
 <!-- #4 start reading-->
 <div class="row-content" *ngIf="(blogs && blogs[0]) else loading">
   <div class="title-block">
-    <p class="title-text">{{'read_learn' | translate}}</p>
+    <p class="title-text">{{'blog' | translate}}</p>
   </div>
 
   <div class="row">
@@ -73,8 +82,12 @@
     </div>
   </div>
 
-  <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/blog"><i class="ag-arrow-right-thick"></i></button>
+  <div class="d-flex justify-content-between pt-10">
+    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+
+    <button type="button" class="btn btn-primary" routerLink="/blog">
+      <i class="ag-arrow-right-thick"></i>
+    </button>
   </div>
 </div>
 <hr>
@@ -88,7 +101,9 @@
 
   <p class="description" [innerHTML]="info[2].description"></p>
 
-  <div class="read-block pull-right">
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
+
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[2].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
@@ -115,9 +130,14 @@
     </div>
   </div>
 
-  <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/video"><i class="ag-arrow-right-thick"></i></button>
+  <div class="d-flex justify-content-between pt-10">
+    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+
+    <button type="button" class="btn btn-primary" routerLink="/video">
+      <i class="ag-arrow-right-thick"></i>
+    </button>
   </div>
+
 </div>
 <hr>
 <!-- #6 end -->
@@ -131,7 +151,9 @@
   <p class="description" [innerHTML]="info[3].description">
   </p>
 
-  <div class="read-block pull-right">
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
+
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[3].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
@@ -157,9 +179,14 @@
     </div>
   </div>
 
-  <div class="read-block pull-right">
-    <button type="button" class="btn btn-primary" routerLink="/news"><i class="ag-arrow-right-thick"></i></button>
+  <div class="d-flex justify-content-between pt-10">
+    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+
+    <button type="button" class="btn btn-primary" routerLink="/news">
+      <i class="ag-arrow-right-thick"></i>
+    </button>
   </div>
+
 </div>
 <hr>
 <!-- #8 end -->
@@ -173,7 +200,9 @@
   <p class="description" [innerHTML]="info[4].description">
   </p>
 
-  <div class="read-block pull-right">
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
+
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[4].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>

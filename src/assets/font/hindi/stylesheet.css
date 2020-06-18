@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Kruti Dev 010';
+    src: url('KrutiDev010.woff2') format('woff2'),
+        url('KrutiDev010.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kruti Dev 040 Wide';
+    src: url('KrutiDev040Wide.woff2') format('woff2'),
+        url('KrutiDev040Wide.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kruti Dev 100';
+    src: url('KrutiDev100Thin.woff2') format('woff2'),
+        url('KrutiDev100Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

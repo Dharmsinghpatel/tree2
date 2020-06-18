@@ -1,6 +1,7 @@
 //
 $un:px;
 //
+$n5: 5;
 $n10: 10;
 $n30: 30;
 $n50: 50;
@@ -19,6 +20,10 @@ $n0: 0;
 }
 
 //margin
+.mt-5{
+    margin-top:$n5+$un;
+}
+
 .mt-10{
     margin-top:$n10+$un;
 }
@@ -33,4 +38,11 @@ $n0: 0;
 
 .mb-30{
     margin-bottom:$n30+$un;
+}
+
+.mr-10{
+    margin-right:$n10+$un;
+}
+.ml-10{
+    margin-left:$n10+$un;
 }

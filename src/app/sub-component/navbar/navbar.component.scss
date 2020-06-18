@@ -1,6 +1,7 @@
 @import "../../../assets/colors/color.scss";
 @import "../../../assets/font/font.scss";
 @import "../../../assets/styles/space.scss";
+@import "../../../assets/styles/media-query.scss";
 
 .custom-navbar{
     position: sticky;
@@ -13,12 +14,12 @@
     font-size: $regular;
 }
 
-.custom-navbar .container{
-    padding:0px;
+.navbar {
+    padding :0px;
 }
 
-.navbar {
-    padding: .5rem 0rem;
+.nav-link {
+    padding: 0px;
 }
 
 .navbar a small,a,ul li a{
@@ -27,14 +28,6 @@
     font-weight: $regular;
     color: $c-font-white;
 }
-
-// .active {
-//      font-size: $font-md;
-//     font-family: $primary_font;
-//     font-weight: $regular;
-//     color: $c-white !important;
-//     border-bottom: 2px solid $c-primary;
-// }
 
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
     font-weight: $bold;
@@ -61,4 +54,19 @@
 .dropdown-item.active, .dropdown-item:active {
     color: $c-font-white;
     background-color:$c-secondary; ;
+}
+
+@include rwd(576){
+    .custom-navbar .container{
+      padding: 0px;
+    }
+}
+  
+@include maxd(771) {
+    .site-name {
+      font-size: 0;
+    }
+    .custom-navbar #navbarSupportedContent{
+        width: 69%;
+    }
 }

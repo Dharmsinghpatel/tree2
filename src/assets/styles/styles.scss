@@ -7,6 +7,7 @@
 @import './media-query.scss';
 @import '../font-icon/style.css';
 
+
 body {
     font-family: $primary_font;
     font-size: $primary-fs;
@@ -15,7 +16,7 @@ body {
 
 .parent-body{
     min-height: 100vh;
-    padding: 0px;
+    // padding: 0px;
     color:$c-black;
 }
 
@@ -37,20 +38,6 @@ body {
     background: no-repeat center center;
     background-size: 100% 100%;
 }
-
-// .custom-breadcrumb{
-//     .breadcrumb{
-//         display: flex;
-//         flex-wrap: wrap;
-//         padding: 5px 10px;
-//         margin-bottom: 10px;
-//         list-style: none;
-//         background-color: transparent;
-//         border-radius: 0rem;
-//         border-bottom: groove;
-//         border-bottom-width: 1px;
-//     }
-// }
 
 .title{
     font-family: $primary_font;
@@ -206,7 +193,6 @@ ul {
   
   .video-container img {
     width: 100%;
-    max-height: 135px;
   }
 
   .card img {
@@ -304,6 +290,19 @@ primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):
   box-shadow: 0 0 0 0.2rem $c-gray ;
 }
 
+
+.btn-simple {
+  color: $c-font-primary;
+  background-color:$c-white;
+  border-color: $c-primary;
+  border-radius: 50px;
+}
+
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow:none;
+}
+
 .card-text-bold{
   padding: 10px 0px;
   font-weight: $bold;
@@ -346,9 +345,35 @@ button:focus {
   outline: 0px auto -webkit-focus-ring-color;
 }
 
+/*
+* text justify
+*/
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    text-align: justify;
+}
+
+
 @media (min-width: 576px){
   .modal-dialog {
       max-width: 665px;
       margin: 1.75rem auto;
   }
+  .parent-body {
+    padding: 0px; 
+  }
+  .custom-navbar .container{
+    padding: 0px;
+  }
+  .video-container img {
+    max-height: 200px;
+  }
+
+}
+
+ @include maxd(771) {
+   .contact .col-md-3,.col-md-9{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+   }
 }
