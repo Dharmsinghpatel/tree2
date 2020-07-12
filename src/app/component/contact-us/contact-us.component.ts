@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { HeaderService } from 'src/app/sub-component/header/header.service';
 import { ApiService } from 'src/service/api.service';
 import { ToastrService } from 'ngx-toastr';
+import { NavbarService } from 'src/app/sub-component/navbar/navbar.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -16,9 +17,15 @@ export class ContactUsComponent implements OnInit {
     public header: HeaderService,
     public api: ApiService,
     private formBuilder: FormBuilder,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public navService: NavbarService
   ) {
     this.header.hide();
+    navService.metaData = [{ name: "description", content: "Connect to us" },
+    { name: "keywords", content: "agriarbor, contact, agri arbor contact, agriarbor contact" }];
+
+    navService.metaTitle = 'Contact';
+
     this.form = this.formBuilder.group({
       first_name: [null, [
         Validators.required,
@@ -44,7 +51,6 @@ export class ContactUsComponent implements OnInit {
         this.toastr.success('Success', '')
       });
     }
-    console.log(this.form, this.form.value);
   }
 
 }

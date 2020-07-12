@@ -45,10 +45,16 @@ body {
     font-weight: $bold;
 }
 
-.title-block{
+.info .title-block{
     align-items: center;
     text-align: center;
     padding: 15px 0px;
+}
+
+.title-block{
+    align-items: center;
+    text-align: center;
+    padding-top: 15px;
 }
 
 .title-text{

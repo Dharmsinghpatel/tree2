@@ -23,7 +23,6 @@ export class CarouselComponent implements OnInit {
 
   ngDoCheck() {
     this.advs = this.carsl.getAdvetise();
-    console.log(this.advs, this.carsl.visible);
   }
 
   openDoc(link) {

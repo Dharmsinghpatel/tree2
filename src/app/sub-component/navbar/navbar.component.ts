@@ -7,7 +7,8 @@ import { NavbarService } from './navbar.service';
 import { ReadingComponent } from 'src/app/component/reading/reading.component';
 import { ApiService } from 'src/service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppSettings } from '../../config/AppSettings'
+import { AppSettings } from '../../config/AppSettings';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navbar',
@@ -31,6 +32,8 @@ export class NavbarComponent implements OnInit {
     FormBuilder, public read: ReadingComponent,
     public api: ApiService,
     public route: ActivatedRoute,
+    private meta: Meta,
+    private ptitle: Title,
     public router: Router,
     public translate: TranslateService,
     private modalService: NgbModal
@@ -53,6 +56,18 @@ export class NavbarComponent implements OnInit {
     let lang = localStorage.getItem('lang');
     lang = lang ? lang : 'en';
     this.navService = this.navbar;
+    let metaTags = this.navService.metaData == undefined ? [] : this.navService.metaData;
+    let pageTitle = this.navService.metaTitle.replace(/\//gi, " ");
+    console.log(pageTitle);
+    pageTitle = (pageTitle != undefined && pageTitle != ' ') ? pageTitle : 'HOME';
+
+    this.ptitle.setTitle(pageTitle);
+
+    if (metaTags.length > 0) {
+      metaTags.forEach(tag => {
+        this.meta.updateTag(tag);
+      });
+    }
   }
 
   getDropdown(value) {

@@ -14,7 +14,6 @@ export class CarouselService {
     toggle() { this.visible = !this.visible; }
 
     setAdvertise(advs: any) {
-        console.log('advs', advs);
         this.advs = advs;
     }
 

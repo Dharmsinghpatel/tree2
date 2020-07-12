@@ -29,17 +29,20 @@ export class VideoComponent implements OnInit {
     this.route.data.subscribe(routeData => {
       localStorage.setItem('currentRoute', routeData['type']);
     })
+    this.navbar.metaData = [{ name: "description", content: "Enjoy videos!" },
+    { name: "keywords", content: "agriarbor, video, agri arbor video, agriarbor video" }];
+    this.navbar.metaTitle = 'Videos';
   }
 
   ngOnInit(): void {
     window.scroll(0, 0);
+
     this.route.paramMap.subscribe(paramMap => {
       let id = paramMap.get('id');
       if (id != undefined && id != null && id != '') {
         this.isVideo = true;
         this.api.getVideoes({ id: id }).subscribe(res => {
           if (res.status == 'success') {
-            console.log("Topic", res);
             this.video = res[0];
           }
         })
@@ -48,8 +51,9 @@ export class VideoComponent implements OnInit {
 
       this.api.getVideoes({}).subscribe(res => {
         if (res.status == 'success') {
-          this.videoes = res.data;
-          this.ivideo = res.data[0];
+          this.videoes = res.data.videos;
+          this.ivideo = res.data.videos[0];
+          this.navbar.metaData = res.data.meta;;
         }
       })
     })

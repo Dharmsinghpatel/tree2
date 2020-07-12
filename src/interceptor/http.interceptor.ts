@@ -8,7 +8,6 @@ export class MockHttpCalIInterceptor implements HttpInterceptor {
     constructor(private injector: Injector, private loaderService: LoaderService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log('Intercepted request: ' + request.url);
         if (request.url) {
             request = request.clone({
                 headers: new HttpHeaders({

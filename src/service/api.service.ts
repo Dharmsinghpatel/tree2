@@ -19,7 +19,6 @@ export class ApiService {
   }
 
   public analytic(data) {
-    console.log(data)
     return this.apiCall('resources/video', data, 'post');
   }
 

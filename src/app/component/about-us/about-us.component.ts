@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/sub-component/header/header.service';
 import { AppSettings } from '../../config/AppSettings'
+import { NavbarService } from 'src/app/sub-component/navbar/navbar.service';
 
 
 @Component({
@@ -10,8 +11,14 @@ import { AppSettings } from '../../config/AppSettings'
 })
 export class AboutUsComponent implements OnInit {
   logo = AppSettings.LOGO;
-  constructor(public header: HeaderService) {
+  constructor(public header: HeaderService,
+    public navService: NavbarService
+  ) {
     this.header.hide();
+    navService.metaData = [{ name: "description", content: "Know about us" },
+    { name: "keywords", content: "agriarbor, about, agri arbor about, agriarbor about" }];
+
+    navService.metaTitle = 'About';
   }
 
   ngOnInit(): void {

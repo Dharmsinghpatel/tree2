@@ -3,6 +3,8 @@ $un:px;
 //
 $n5: 5;
 $n10: 10;
+$n15: 15;
+$n20: 20;
 $n30: 30;
 $n50: 50;
 $n0: 0;
@@ -19,6 +21,10 @@ $n0: 0;
     padding-top: $n10+$un;
 }
 
+.pt-15 {
+    padding-top: $n15+$un !important;
+}
+
 //margin
 .mt-5{
     margin-top:$n5+$un;
@@ -26,6 +32,14 @@ $n0: 0;
 
 .mt-10{
     margin-top:$n10+$un;
+}
+
+.mt-15{
+    margin-top:$n15+$un;
+}
+
+.mt-20{
+    margin-top:$n20+$un;
 }
 
 .mt-50{

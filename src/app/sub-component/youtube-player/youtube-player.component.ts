@@ -3,6 +3,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { YoutubeService } from './youtube.service';
 import { AppSettings } from '../../config/AppSettings'
 import { ApiService } from 'src/service/api.service';
+
 // import reframe from 'reframe.js';
 
 @Component({
@@ -33,16 +34,14 @@ export class YoutubePlayerComponent implements OnInit {
 
 
   ngOnInit() {
-    this.youtube_link = "https://www.youtube.com/embed/" + this.youtubId;
-    console.log(this.youtube_link);
+    this.youtube_link = "https://www.youtube.com/embed/" + this.youtubId + '?autoplay=1';
   }
 
   //overload previous video
   ngDoCheck() {
 
     this.youtubId = this.youtube.youtubeVideo.id ? this.youtube.youtubeVideo.link : this.youtubId;
-    this.youtube_link = "https://www.youtube.com/embed/" + this.youtubId;
-    console.log(this.youtube_link);
+    this.youtube_link = "https://www.youtube.com/embed/" + this.youtubId + '?autoplay=1';
     window.scrollTo(0, 0);
   }
 

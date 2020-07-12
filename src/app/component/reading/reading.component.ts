@@ -22,7 +22,7 @@ export class ReadingComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     public navbar: NavbarService,
-    public floattab: FloattabService) {
+    public floattab: FloattabService, ) {
     this.header.show();
     this.header.title = 'loading'
   }
@@ -46,6 +46,8 @@ export class ReadingComponent implements OnInit {
               this.navbar.isType = false;
               this.floattab.isBack = true;
               this.floattab.backNav = routeData.type;
+              this.navbar.metaData = this.topic.meta;
+              this.navbar.metaTitle = this.topic['title'];
             }
           })
           return;
@@ -53,12 +55,14 @@ export class ReadingComponent implements OnInit {
 
         this.api.getTopics(routeData).subscribe(res => {
           if (res.status == 'success') {
-            this.topics = res.data;
+            this.topics = res.data.topics;
             this.floattab.isBack = false;
             this.floattab.backNav = "";
             this.header.hide();
             this.navbar.isSearch = true;
             this.navbar.isType = true;
+            this.navbar.metaData = res.data.meta;
+            this.navbar.metaTitle = routeData['type'];
           }
         })
       })

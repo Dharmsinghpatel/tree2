@@ -23,7 +23,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let info of infos">
+    <div class="col-md-3 col-sm-4 col-12 mt-15" *ngFor="let info of infos">
       <div class="card card-border" (click)="navigate('info',info?.id)">
         <img class="card-img-top" src="{{info?.image_url}}" alt="{{info?.file_name}}">
         <div class="card-body card-text-bold">
@@ -71,7 +71,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let blog of blogs">
+    <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let blog of blogs">
       <div class="card card-border" (click)="navigate('blog',blog?.id)">
         <img class="card-img-top" src="{{blog?.image_url}}" alt="{{blog?.file_name}}">
         <div class="card-body card-text-bold">
@@ -118,7 +118,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let video of resources;let i=index">
+    <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let video of resources;let i=index">
       <div class="card card-border">
         <div class="card-img-top">
           <app-youtube-player [youtube-id]="video.link" [image]="video.image_url" [id]="i"></app-youtube-player>
@@ -168,7 +168,7 @@
   </div>
 
   <div class="row" *ngIf="news">
-    <div class="col-md-3 col-sm-4 col-12" *ngFor="let detail of news">
+    <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let detail of news">
       <div class="card card-border" (click)="navigate('news',detail?.id)">
         <img class="card-img-top" src="{{detail?.image_url}}" alt="{{detail?.file_name}}">
         <div class="card-body card-text-bold">

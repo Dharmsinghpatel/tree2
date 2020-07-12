@@ -11,6 +11,8 @@ export class NavbarService {
     search: string = '';
     searchTopics: any = [];
     searchVideoes: any = [];
+    metaData: any = [];
+    metaTitle: string = '';
 
     constructor() {
         this.visible = false;

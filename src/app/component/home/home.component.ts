@@ -16,8 +16,11 @@ export class HomeComponent implements OnInit {
   infos: any;
   news: any;
   resources: any;
-  constructor(public api: ApiService, public carsl: CarouselService,
-    public header: HeaderService, public router: Router, public navService: NavbarService) {
+  constructor(public api: ApiService,
+    public carsl: CarouselService,
+    public header: HeaderService,
+    public router: Router,
+    public navService: NavbarService) {
     this.carsl.show();
     navService.isSearch = false;
     navService.isType = false;
@@ -36,6 +39,8 @@ export class HomeComponent implements OnInit {
         this.news = dash['news'];
         this.blogs = dash['blogs'];
         this.resources = dash['resources'];
+        navService.metaData = dash['meta'];
+        navService.metaTitle = 'Home';
 
         this.carsl.setAdvertise(dash['carousel']);
       }
@@ -47,7 +52,6 @@ export class HomeComponent implements OnInit {
   }
 
   navigate(type: string, id: string) {
-    console.log(type, id);
     this.router.navigate(['/' + type, id]).then(nav => {
       console.log('Nav>>', nav);
     }, err => {

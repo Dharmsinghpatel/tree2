@@ -10,7 +10,6 @@ export class SidebarComponent {
 
   sideBarToggle() {
     this.width = this.width == '0px' ? '250px' : '0px';
-    console.log('side>>', this.width)
     document.getElementById("sidenavId").style.width = this.width;
   }
 }
