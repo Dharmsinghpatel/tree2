@@ -15,8 +15,8 @@ export class AboutUsComponent implements OnInit {
     public navService: NavbarService
   ) {
     this.header.hide();
-    navService.metaData = [{ name: "description", content: "Know about us" },
-    { name: "keywords", content: "agriarbor, about, agri arbor about, agriarbor about" }];
+    navService.metaData = [{ name: "description", content: "" },
+    { name: "keywords", content: "" }];
 
     navService.metaTitle = 'About';
   }

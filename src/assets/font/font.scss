@@ -135,3 +135,13 @@ $font-xlg: 30px;
 
 //icon font
 $icon-font:'agriarbor';
+
+.fw-regular{
+    font-weight: $regular !important;
+}
+.fw-bold{
+    font-weight: $bold;
+}
+.fw-extra-bold{
+    font-weight: $black;
+}

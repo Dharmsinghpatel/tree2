@@ -29,6 +29,7 @@
     "first_name": "First Name",
     "last_name": "Last Name",
     "email": "Email",
+    "contacts": "Email / Mobile Number",
     "comment": "Comment",
     "send": "Send",
     "enter": "Enter",
@@ -40,6 +41,8 @@
         "first_name_error": "First Name must be at least 4 characters long.",
         "email_required": "Email is required.",
         "email_error": "Email must be valid.",
+        "contact_required": "Email / Mobile Number is required.",
+        "contact_error": "Email / Mobile Number must be valid.",
         "comment_required": "Comment is required.",
         "comment_error": "Comment must be at least 4 characters long."
     }

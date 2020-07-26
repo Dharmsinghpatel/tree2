@@ -4,6 +4,7 @@ import { HeaderService } from 'src/app/sub-component/header/header.service';
 import { ApiService } from 'src/service/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { NavbarService } from 'src/app/sub-component/navbar/navbar.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-contact-us',
@@ -18,21 +19,22 @@ export class ContactUsComponent implements OnInit {
     public api: ApiService,
     private formBuilder: FormBuilder,
     public toastr: ToastrService,
-    public navService: NavbarService
-  ) {
+    public navService: NavbarService,
+    public router:Router
+    ) {
     this.header.hide();
-    navService.metaData = [{ name: "description", content: "Connect to us" },
-    { name: "keywords", content: "agriarbor, contact, agri arbor contact, agriarbor contact" }];
+    navService.metaData = [{ name: "description", content: "" },
+    { name: "keywords", content: "" }];
 
     navService.metaTitle = 'Contact';
 
     this.form = this.formBuilder.group({
       first_name: [null, [
-        Validators.required,
-        Validators.minLength(4)]],
+      Validators.required,
+      Validators.minLength(4)]],
       last_name: [null],
-      email: [null, [Validators.required,
-      Validators.pattern('[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})')
+      contact: [null, [Validators.required,
+      Validators.pattern('^((\\+91-?)|0)?[6-9]{1}[0-9]{9}$|[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})')
       ]],
       comment: [null, [Validators.required, Validators.minLength(4)]],
     });
@@ -47,8 +49,14 @@ export class ContactUsComponent implements OnInit {
     this.form.markAllAsTouched();
     if (this.form.valid) {
       this.api.sendMessage(this.form.value).subscribe(res => {
+        if(res.status=='success'){
+          this.toastr.success(res.msg)
+          this.router.navigate(['/home']);
+        }else{
+          this.toastr.error(`Sorry to you for this inconvince.
+                             इस अनिश्चितता के लिए आपको क्षमा करें।`)
+        }
 
-        this.toastr.success('Success', '')
       });
     }
   }

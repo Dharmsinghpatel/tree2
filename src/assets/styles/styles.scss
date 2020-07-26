@@ -9,26 +9,26 @@
 
 
 body {
-    font-family: $primary_font;
-    font-size: $primary-fs;
-    font-weight: $regular;
+  font-family: $primary_font;
+  font-size: $primary-fs;
+  font-weight: $regular;
 }
 
 .parent-body{
-    min-height: 100vh;
+  min-height: 100vh;
     // padding: 0px;
     color:$c-black;
-}
+  }
 
-.nav-link .navbar-toggler-icon{
+  .nav-link .navbar-toggler-icon{
     display: inline-block;
 
     @include rwd(1635) {
-        display: none;
-        pointer-events: none;
-        cursor: default;
-        text-decoration: none;
-        color: black;
+      display: none;
+      pointer-events: none;
+      cursor: default;
+      text-decoration: none;
+      color: black;
     }
     
     width: 1.5em;
@@ -37,87 +37,87 @@ body {
     content: "";
     background: no-repeat center center;
     background-size: 100% 100%;
-}
+  }
 
-.title{
+  .title{
     font-family: $primary_font;
     font-size: $font-md;
     font-weight: $bold;
-}
+  }
 
-.info .title-block{
+  .info .title-block{
     align-items: center;
     text-align: center;
     padding: 15px 0px;
-}
+  }
 
-.title-block{
+  .title-block{
     align-items: center;
     text-align: center;
     padding-top: 15px;
-}
+  }
 
-.title-text{
+  .title-text{
     font-family: $primary_font;
     font-size: $font-md;
     font-weight: $bold;
     border-bottom: 2px solid;
     padding: 0px 10px;
     display: inline-block;
-}
+  }
 
-.description{
-     font-family: $primary_font;
-    font-size: $primary-fs;
-    font-weight: $regular;
-}
+  .description{
+   font-family: $primary_font;
+   font-size: $primary-fs;
+   font-weight: $regular;
+ }
 
 
-.pull-right{
-    text-align: right;
+ .pull-right{
+  text-align: right;
 }
 
 .pull-left{
-    text-align:left;
+  text-align:left;
 }
 
 .pull-center{
-    text-align:center;
+  text-align:center;
 }
 
 /* ul custom style */
 
 ul {
-    list-style-type: none;
-    font-size: 16px;
-    line-height: 2.5;
-    margin: 0px;
-    padding: 0px;
-    font-family: $primary_font;
-    font-size: $primary-fs;
-    font-weight: $regular;
+  list-style-type: none;
+  font-size: 16px;
+  line-height: 2.5;
+  margin: 0px;
+  padding: 0px;
+  font-family: $primary_font;
+  font-size: $primary-fs;
+  font-weight: $regular;
 }
 
 /* accordion toggle plus minus*/
 .accordion .card-toggle:after {
-    font-family: $icon-font;  
-    content: "\e903";
-    float: right; 
+  font-family: $icon-font;  
+  content: "\e903";
+  float: right; 
 }
 .accordion .card-toggle.collapsed:after {
-    content: "\e902";
+  content: "\e902";
 }
 
 /* accordion farword*/
 .accordion .card-forward:after {
-    font-family: $icon-font;  
-    content: "\e912";
-    float: right; 
+  font-family: $icon-font;  
+  content: "\e912";
+  float: right; 
 }
 
 .accordion > .card > .card-header {
-    border-radius: 0;
-    margin-bottom: 1px; 
+  border-radius: 0;
+  margin-bottom: 1px; 
 }
 
 /* custom radio button*/
@@ -180,18 +180,18 @@ ul {
   
   /* Style the indicator (dot/circle) */
   .radio-container .checkmark:after {
-       top: 6px;
-      left: 6px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: $c-white;
-  }
-  
+   top: 6px;
+   left: 6px;
+   width: 8px;
+   height: 8px;
+   border-radius: 50%;
+   background: $c-white;
+ }
+
 
   /*player*/
 
-.video-container {
+  .video-container {
     position: relative;
     width: 100%;
     max-width: 400px;
@@ -206,7 +206,7 @@ ul {
     // max-height: 135px;
   }
   .card-title{
-    margin-bottom:0;
+    margin-bottom: 10px;
     color:$c-blue;
   }
   
@@ -263,7 +263,7 @@ ul {
     margin-bottom: 0rem; 
     border: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
+  }
 
 /*Button */
 .btn-primary {
@@ -323,6 +323,13 @@ primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):
   color: $c-font-dark-black;
 }
 
+.news {
+  text-align: center;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 0px;
+}
+
 a{
   color: $c-font-white;
   font-weight: $medium;
@@ -343,6 +350,7 @@ a:hover {
   color: red;
 }
 
+
 /* 
   remove modal cross button outline
 */
@@ -356,15 +364,15 @@ button:focus {
 */
 
 *, *::before, *::after {
-    box-sizing: border-box;
-    text-align: justify;
+  box-sizing: border-box;
+  text-align: justify;
 }
 
 
 @media (min-width: 576px){
   .modal-dialog {
-      max-width: 665px;
-      margin: 1.75rem auto;
+    max-width: 665px;
+    margin: 1.75rem auto;
   }
   .parent-body {
     padding: 0px; 
@@ -378,8 +386,8 @@ button:focus {
 
 }
 
- @include maxd(771) {
-   .contact .col-md-3,.col-md-9{
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-   }
+@include maxd(771) {
+ .contact .col-md-3,.col-md-9{
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
 }

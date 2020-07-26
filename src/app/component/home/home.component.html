@@ -10,189 +10,193 @@
     <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
 
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[0].id)"><i
-        class="ag-arrow-right-thick"></i></button>
+      class="ag-arrow-right-thick"></i></button>
+    </div>
   </div>
-</div>
-<hr>
-<!-- #1 end info-->
+  <hr>
+  <!-- #1 end info-->
 
-<!-- #2 start reading-->
-<div class="row-content" *ngIf="(infos && infos[0]) else loading">
-  <div class="title-block">
-    <p class="title-text">{{'do_know' | translate}}</p>
-  </div>
+  <!-- #2 start reading-->
+  <div class="row-content" *ngIf="(infos && infos[0]) else loading">
+    <div class="title-block">
+      <p class="title-text">{{'do_know' | translate}}</p>
+    </div>
 
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-12 mt-15" *ngFor="let info of infos">
-      <div class="card card-border" (click)="navigate('info',info?.id)">
-        <img class="card-img-top" src="{{info?.image_url}}" alt="{{info?.file_name}}">
-        <div class="card-body card-text-bold">
-          <h5 *ngIf="info.title" class="card-title">{{info.title}}</h5>
-          <p class="card-text" [innerHTML]="info.description"></p>
+    <div class="row">
+      <div class="col-md-3 col-sm-4 col-12 mt-15" *ngFor="let info of infos">
+        <div class="card card-border" (click)="navigate('info',info?.id)">
+          <img class="card-img-top" src="{{info?.image_url}}" alt="{{info?.file_name}}">
+          <div class="card-body card-text-bold">
+            <h5 *ngIf="info.title" class="card-title">{{info.title}}</h5>
+            <p class="card-text" [innerHTML]="info.description"></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="d-flex justify-content-between mt-10">
-    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+    <div class="d-flex justify-content-between mt-10">
+      <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
 
-    <button type="button" class="btn btn-primary" routerLink="/info">
-      <i class="ag-arrow-right-thick"></i>
-    </button>
-  </div>
-</div>
-<hr>
-<!-- #2 end reading-->
-
-<!-- #3 start info-->
-<div class="info" *ngIf="(info && info[1]) else loading">
-  <div class="title-block">
-    <p class="title-text">{{info[1]?.title}}</p>
-  </div>
-
-  <p class="description" [innerHTML]="info[1].description"></p>
-
-  <div class="d-flex justify-content-between">
-    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
-
-    <button type="button" class="btn btn-primary" (click)="navigate('info',info[1].id)"><i
-        class="ag-arrow-right-thick"></i></button>
-  </div>
-
-</div>
-<hr>
-<!-- #3 end -->
-
-<!-- #4 start reading-->
-<div class="row-content" *ngIf="(blogs && blogs[0]) else loading">
-  <div class="title-block">
-    <p class="title-text">{{'blog' | translate}}</p>
-  </div>
-
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let blog of blogs">
-      <div class="card card-border" (click)="navigate('blog',blog?.id)">
-        <img class="card-img-top" src="{{blog?.image_url}}" alt="{{blog?.file_name}}">
-        <div class="card-body card-text-bold">
-          <h5 *ngIf="blog.title" class="card-title">{{blog.title}}</h5>
-          <p class="card-text" [innerHTML]="blog.description"></p>
-        </div>
-      </div>
+      <button type="button" class="btn btn-primary" routerLink="/info">
+        <i class="ag-arrow-right-thick"></i>
+      </button>
     </div>
   </div>
+  <hr>
+  <!-- #2 end reading-->
 
-  <div class="d-flex justify-content-between pt-10">
-    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+  <!-- #3 start info-->
+  <div class="info" *ngIf="(info && info[1]) else loading">
+    <div class="title-block">
+      <p class="title-text">{{info[1]?.title}}</p>
+    </div>
 
-    <button type="button" class="btn btn-primary" routerLink="/blog">
-      <i class="ag-arrow-right-thick"></i>
-    </button>
-  </div>
-</div>
-<hr>
-<!-- #4 end -->
+    <p class="description" [innerHTML]="info[1].description"></p>
 
-<!-- #5 start -->
-<div class="info" *ngIf="(info && info[2]) else loading">
-  <div class="title-block">
-    <p class="title-text">{{info[2].title}}</p>
-  </div>
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
 
-  <p class="description" [innerHTML]="info[2].description"></p>
-
-  <div class="d-flex justify-content-between">
-    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
-
-    <button type="button" class="btn btn-primary" (click)="navigate('info',info[2].id)"><i
+      <button type="button" class="btn btn-primary" (click)="navigate('info',info[1].id)"><i
         class="ag-arrow-right-thick"></i></button>
-  </div>
-</div>
-<hr>
-<!-- #5 end -->
+      </div>
 
-<!-- #6 start video -->
-<div class="row-content" *ngIf="(resources &&  resources[0]) else loading">
-  <div class="title-block">
-    <p class="title-text">{{'time_watch' | translate}}</p>
-  </div>
+    </div>
+    <hr>
+    <!-- #3 end -->
 
-  <div class="row">
-    <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let video of resources;let i=index">
-      <div class="card card-border">
-        <div class="card-img-top">
-          <app-youtube-player [youtube-id]="video.link" [image]="video.image_url" [id]="i"></app-youtube-player>
-        </div>
-        <div class="card-body card-text-bold">
-          <p class="card-text">{{video.description}}</p>
+    <!-- #4 start reading-->
+    <div class="row-content" *ngIf="(blogs && blogs[0]) else loading">
+      <div class="title-block">
+        <p class="title-text">{{'blog' | translate}}</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let blog of blogs">
+          <div class="card card-border" (click)="navigate('blog',blog?.id)">
+            <img class="card-img-top" src="{{blog?.image_url}}" alt="{{blog?.file_name}}">
+            <div class="card-body card-text-bold">
+              <h5 *ngIf="blog.title" class="card-title">{{blog.title}}</h5>
+              <p class="card-text" [innerHTML]="blog.description"></p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="d-flex justify-content-between pt-10">
-    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
-
-    <button type="button" class="btn btn-primary" routerLink="/video">
-      <i class="ag-arrow-right-thick"></i>
-    </button>
-  </div>
-
-</div>
-<hr>
-<!-- #6 end -->
-
-<!-- #7 start -->
-<div class="info" *ngIf="(info && info[3]) else loading">
-  <div class="title-block">
-    <p class="title-text">{{info[3].title}}</p>
-  </div>
-
-  <p class="description" [innerHTML]="info[3].description">
-  </p>
-
-  <div class="d-flex justify-content-between">
-    <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
-
-    <button type="button" class="btn btn-primary" (click)="navigate('info',info[3].id)"><i
-        class="ag-arrow-right-thick"></i></button>
-  </div>
-</div>
-<hr>
-<!-- #7 end -->
-
-<!-- #8 start news -->
-<div class="row-content" *ngIf="(news && news[0]) else loading">
-  <div class="title-block">
-    <p class="title-text">{{'connect_world' | translate}}</p>
-  </div>
-
-  <div class="row" *ngIf="news">
-    <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let detail of news">
-      <div class="card card-border" (click)="navigate('news',detail?.id)">
-        <img class="card-img-top" src="{{detail?.image_url}}" alt="{{detail?.file_name}}">
-        <div class="card-body card-text-bold">
-          <h5 *ngIf="news.title" class="card-title">{{detail.title}}</h5>
-          <p class="card-text" [innerHTML]="detail.description"></p>
-        </div>
+      <div class="d-flex justify-content-between pt-10">
+        <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+        <button type="button" class="btn btn-primary" routerLink="/blog">
+          <i class="ag-arrow-right-thick"></i>
+        </button>
       </div>
     </div>
-  </div>
+    <hr>
+    <!-- #4 end -->
 
-  <div class="d-flex justify-content-between pt-10">
-    <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+    <!-- #5 start -->
+    <div class="info" *ngIf="(info && info[2]) else loading">
+      <div class="title-block">
+        <p class="title-text">{{info[2].title}}</p>
+      </div>
 
-    <button type="button" class="btn btn-primary" routerLink="/news">
-      <i class="ag-arrow-right-thick"></i>
-    </button>
-  </div>
+      <p class="description" [innerHTML]="info[2].description"></p>
 
-</div>
-<hr>
-<!-- #8 end -->
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
 
-<!-- #9 start -->
-<div class="info" *ngIf="(info && info[4]) else loading">
+        <button type="button" class="btn btn-primary" (click)="navigate('info',info[2].id)"><i
+          class="ag-arrow-right-thick"></i></button>
+        </div>
+      </div>
+      <hr>
+      <!-- #5 end -->
+
+      <!-- #6 start video -->
+      <div class="row-content" *ngIf="(resources &&  resources[0]) else loading">
+        <div class="title-block">
+          <p class="title-text">{{'time_watch' | translate}}</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let video of resources;let i=index">
+            <div class="card card-border">
+              <div class="card-img-top">
+                <app-youtube-player [youtube-id]="video.link" [image]="video.image_url" [id]="i"></app-youtube-player>
+              </div>
+              <div class="card-body card-text-bold">
+                <p class="card-text">{{video.description}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between pt-10">
+          <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+
+          <button type="button" class="btn btn-primary" routerLink="/video">
+            <i class="ag-arrow-right-thick"></i>
+          </button>
+        </div>
+
+      </div>
+      <hr>
+      <!-- #6 end -->
+
+      <!-- #7 start -->
+      <div class="info" *ngIf="(info && info[3]) else loading">
+        <div class="title-block">
+          <p class="title-text">{{info[3].title}}</p>
+        </div>
+
+        <p class="description" [innerHTML]="info[3].description">
+        </p>
+
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn-simple btn">{{'read_more' | translate}}</button>
+
+          <button type="button" class="btn btn-primary" (click)="navigate('info',info[3].id)"><i
+            class="ag-arrow-right-thick"></i></button>
+          </div>
+        </div>
+        <hr>
+        <!-- #7 end -->
+
+        <!-- #8 start news -->
+        <div class="row-content" *ngIf="(news && news[0]) else loading">
+          <div class="title-block">
+            <p class="title-text">{{'connect_world' | translate}}</p>
+          </div>
+
+          <div class="row" *ngIf="news">
+            <div class="col-md-3 col-sm-4 col-12  mt-15" *ngFor="let detail of news">
+              <div class="card card-border" (click)="navigate('news',detail?.id)">
+                <!-- <img *ngIf="detail?.image_url" class="card-img-top" src="{{detail?.image_url}}" alt="{{detail?.file_name}}"> -->
+                <div class="card-body card-text-bold">
+                  <h5 *ngIf="detail.title" class="card-title">{{detail.title}}</h5>
+                  <p *ngIf="detail.publish_time" class="mb-5">
+                    <small class="fw-extra-bold">Publish Date: </small>
+                    <small>{{detail.publish_time | date }}</small>
+                  </p>
+                  <p class="description" [innerHTML]="detail.description"></p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between pt-10">
+            <button type="button" class="btn-simple btn">{{'show_more' | translate}}</button>
+
+            <button type="button" class="btn btn-primary" routerLink="/news">
+              <i class="ag-arrow-right-thick"></i>
+            </button>
+          </div>
+
+        </div>
+        <!-- <hr> -->
+        <!-- #8 end -->
+
+        <!-- #9 start -->
+<!-- <div class="info" *ngIf="(info && info[4]) else loading">
   <div class="title-block">
     <p class="title-text">{{info[4].title}}</p>
   </div>
@@ -206,9 +210,8 @@
     <button type="button" class="btn btn-primary" (click)="navigate('info',info[4].id)"><i
         class="ag-arrow-right-thick"></i></button>
   </div>
-</div>
+</div> -->
 <!-- #9 end -->
-
 
 <ng-template #loading>
   <div class="info">
