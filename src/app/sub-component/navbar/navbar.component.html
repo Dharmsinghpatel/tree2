@@ -20,7 +20,7 @@
 
             <div class="input-group-append">
               <button id="select_button" class="btn btn-secondary dropdown-toggle text-capitalize" type="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{'filter' | translate}}</button>
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{searchItem | translate}}</button>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="javascript:void(0)"
                   (click)="getDropdown('all')">{{'all' | translate}}</a>
@@ -32,6 +32,14 @@
                   (click)="getDropdown('fertilizer')">{{ 'fertilizer' | translate}}</a>
                 <a class="dropdown-item" href="javascript:void(0)"
                   (click)="getDropdown('pesticides')">{{ 'pesticides' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('plant')">{{ 'plant' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('flower')">{{ 'flower' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('insects')">{{ 'insects' | translate}}</a>
+                <a class="dropdown-item" href="javascript:void(0)"
+                  (click)="getDropdown('tree')">{{ 'tree' | translate}}</a>
               </div>
             </div>
             <div class="input-group-append">

@@ -55,7 +55,7 @@ export class ReadingComponent implements OnInit {
 
         this.api.getTopics(routeData).subscribe(res => {
           if (res.status == 'success') {
-            this.topics = res.data.topics;
+            this.navbar.searchTopics=this.topics = res.data.topics;
             this.floattab.isBack = false;
             this.floattab.backNav = "";
             this.header.hide();

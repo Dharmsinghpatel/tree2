@@ -10,7 +10,7 @@
                         <p *ngIf="topic.publish_time" class="mb-5">
                           <small class="fw-extra-bold mb-5">Publish Date: </small>
                           <small>{{topic.publish_time | date }}</small>
-                      </p>
+                        </p>
                       <p class="card-text" [innerHTML]="topic.description | safehtml"></p>
                   </div>
               </div>
@@ -27,9 +27,9 @@
    </p>
 
    <div class="mt-10 pull-center" *ngIf="topic.icon">
-    <img src="{{topic?.icon}}" alt="{{topic?.product_name}}">
-    <p class="mt-10 pull-center">{{topic?.product_name}}</p>
-</div>
+        <img src="{{topic?.icon}}" alt="{{topic?.product_name}}">
+        <p class="mt-10 pull-center">{{topic?.product_name}}</p>
+    </div>
 
 
 <div *ngFor="let content of topic?.detail;let i=index">
@@ -38,19 +38,21 @@
             <p [innerHTML]="content?.description | safehtml"></p>
         </div>
 
-        <div *ngSwitchCase="'image'" class="mt-10 pull-center">
-            <img src="{{content?.image_url}}" alt="{{content.title}}">
-            <p class="mt-10 pull-center">{{content?.title}}</p>
+        <div *ngSwitchCase="'image'" class="row">
+             <div *ngFor="let image of content.images;" class="col-md-4 col-sm-4 col-12 pull-center mt-10">
+                <img src="{{image?.image_url}}" alt="{{image.title}}">
+                <p class="mt-10 pull-center">{{image?.title}}</p>
+              </div>
         </div>
 
         <div *ngSwitchCase="'video'" class="mt-10">
             <app-youtube-player [youtube-id]="content.video_url" [image]="content.image_url" [id]="i"
             [is-modal]="isModal">
-        </app-youtube-player>
-        <p class="mt-10 pull-center">{{content?.title}}</p>
-    </div>
+            </app-youtube-player>
+            <p class="mt-10 pull-center">{{content?.title}}</p>
+        </div>
 
-    <div *ngSwitchCase="'site'" class="mt-10">
+        <div *ngSwitchCase="'site'" class="mt-10">
         <div id="accordion" class="accordion" (click)="navigate('external',content.image_url)">
             <div class="card mt-10">
                 <div class="card-header card-forward collapsed border-bottom-0 ">
@@ -60,54 +62,20 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
-    <div *ngSwitchCase="'document'" class="mt-10">
-        <div id="accordion" class="accordion" (click)="navigate(content.display_type,content.document_id)">
-            <div class="card mt-10">
-                <div class="card-header card-forward collapsed border-bottom-0 ">
-                    <a class="card-title title">
+        <div *ngSwitchCase="'document'" class="mt-10">
+            <div id="accordion" class="accordion" (click)="navigate(content.display_type,content.document_id)">
+                <div class="card mt-10">
+                    <div class="card-header card-forward collapsed border-bottom-0 ">
+                        <a class="card-title title">
                         {{content?.title}}
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-            <!-- <div *ngSwitchCase="'topic'">
-                <div id="accordion" class="accordion">
-                    <div class="card mt-10">
-                        <div class="card-header card-toggle collapsed border-bottom-0" data-toggle="collapse"
-                            [attr.href]="'#collapse'+i">
-                            <a class="card-title title">
-                                {{content?.sub_topics.title}}
-                            </a>
-                        </div>
-                        <div id="collapse{{i}}" class="card-body collapse" data-parent="#accordion">
-                            <div *ngFor="let content of content?.sub_topics.detail;let cI=index">
-                                <div [ngSwitch]="content?.type">
-                                    <div *ngSwitchCase="'description'" class="mt-10">
-                                        <p [innerHTML]="content?.description"></p>
-                                    </div>
-
-                                    <div *ngSwitchCase="'image'" class="mt-10 pull-center">
-                                        <img src="{{content?.image_url}}" alt="{{content.title}}">
-                                        <p class="mt-10 pull-center">{{content?.title}}</p>
-                                    </div>
-
-                                    <div *ngSwitchCase="'video'" class="mt-10">
-                                        <app-youtube-player [youtube-id]="content.video_url" [image]="content.image_url"
-                                            [id]="i" [is-modal]="isModal">
-                                        </app-youtube-player>
-                                        <p class="mt-10 pull-center">{{content?.title}}</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>

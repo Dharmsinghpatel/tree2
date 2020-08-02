@@ -9,6 +9,8 @@ import { ApiService } from 'src/service/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppSettings } from '../../config/AppSettings';
 import { Meta, Title } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-navbar',
@@ -23,11 +25,12 @@ export class NavbarComponent implements OnInit {
   currentRoute = '';
   logo = AppSettings.LOGO;
   productType = 'all';
+  searchItem = 'filter';
 
   searchForm = this.fb.group({
     product_name: ['']
-
   });
+
   constructor(public navbar: NavbarService, private fb:
     FormBuilder, public read: ReadingComponent,
     public api: ApiService,
@@ -36,9 +39,17 @@ export class NavbarComponent implements OnInit {
     private ptitle: Title,
     public router: Router,
     public translate: TranslateService,
-    private modalService: NgbModal
-  ) {
+    private modalService: NgbModal,
+    public toastr: ToastrService,
 
+  ) {
+     router.events.subscribe((val) => {
+        this.searchItem = 'filter';
+        this.productType = 'all'
+        this.searchForm.setValue({
+          product_name:''
+        })
+    });
   }
 
   ngOnInit() {
@@ -56,6 +67,7 @@ export class NavbarComponent implements OnInit {
     let lang = localStorage.getItem('lang');
     lang = lang ? lang : 'en';
     this.navService = this.navbar;
+     console.log('>>>');
     let metaTags = this.navService.metaData == undefined ? [] : this.navService.metaData;
     let pageTitle = this.navService.metaTitle.replace(/\//gi, " ");
     console.log(pageTitle);
@@ -71,7 +83,8 @@ export class NavbarComponent implements OnInit {
   }
 
   getDropdown(value) {
-    document.getElementById('select_button').innerHTML = this.productType = value;
+    // document.getElementById('select_button').innerHTML = this.productType = value;
+    this.searchItem = this.productType = value;
   }
 
   onSubmit() {
@@ -88,6 +101,7 @@ export class NavbarComponent implements OnInit {
     this.api.search(data).subscribe(res => {
       if (res.status == 'success') {
         this.navbar.searchTopics = res.data;
+        this.toastr.success(res.msg)
       }
     })
   }

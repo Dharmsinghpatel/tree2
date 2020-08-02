@@ -23,8 +23,8 @@ export class ContactUsComponent implements OnInit {
     public router:Router
     ) {
     this.header.hide();
-    navService.metaData = [{ name: "description", content: "" },
-    { name: "keywords", content: "" }];
+    navService.metaData = [{ name: "description", content: "Comment us about our agriculture product and we will answer you as quickly as possible." },
+    { name: "keywords", content: "agri arbor contact, agri arbor contact us, agri arbor sampark, agri arbor sampark number, agri arbor sampark nambar, agri arbor email, agri arbor number,agri arbor nambar " }];
 
     navService.metaTitle = 'Contact';
 

@@ -39,6 +39,7 @@ import { MockHttpCalIInterceptor } from '../interceptor/http.interceptor';
 import { CustomLoaderComponent } from './sub-component/custom-loader/custom-loader.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SafeMediaPipe } from './pipe/safe-media.pipe';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { environment } from '../environments/environment';
     FloattabComponent,
     ContactUsComponent,
     AboutUsComponent,
-    CustomLoaderComponent
+    CustomLoaderComponent,
+    SafeMediaPipe
   ],
   imports: [
     BrowserModule,

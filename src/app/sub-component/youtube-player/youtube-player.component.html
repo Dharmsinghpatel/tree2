@@ -1,14 +1,14 @@
 <div class="video-player" [ngClass]="!isModal?'p-10':'bg-transparent'">
     <div class="video-container" *ngIf="!playVideo">
         <img *ngIf="image" alt="Error" src="{{image}}" [ngClass]="isModal?'card-img-top':'image  mh-100'">
-        <img *ngIf="!image" alt="Loading .." [src]="logo | safehtml"
+        <img *ngIf="!image" alt="Loading .." [src]="logo | safeMedia"
             [ngClass]="isModal?'card-img-top':'image mh-100'" />
         <button class="btn btn-play" (click)="isModal?open(mymodal):play()"><i
                 class="ag-media-play btn-player"></i></button>
     </div>
 
     <div *ngIf="playVideo">
-        <iframe class="youtube-frame yvideo-handle" [src]="youtube_link | safehtml" frameborder="0" [id]="youtubId"
+        <iframe class="youtube-frame yvideo-handle" [src]="youtube_link | safeMedia" frameborder="0" [id]="youtubId"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
@@ -21,7 +21,7 @@
         </button>
     </div>
     <div class="modal-body">
-        <iframe class="youtube-frame yvideo-handle" [src]="youtube_link | safehtml" frameborder="0" [id]="youtubId"
+        <iframe class="youtube-frame yvideo-handle" [src]="youtube_link | safeMedia" frameborder="0" [id]="youtubId"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="modal-footer">
